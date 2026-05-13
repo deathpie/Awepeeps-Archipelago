@@ -1,0 +1,315 @@
+# Q. What is this file?
+# A. This file contains options which allow you to configure your multiworld experience while allowing
+#    others to play how they want as well.
+#
+# Q. How do I use it?
+# A. The options in this file are weighted. This means the higher number you assign to a value, the
+#    more chances you have for that option to be chosen. For example, an option like this:
+#
+#    map_shuffle:
+#      on: 5
+#      off: 15
+#
+#    Means you have 5 chances for map shuffle to occur, and 15 chances for map shuffle to be turned
+#    off.
+#
+# Q. I've never seen a file like this before. What characters am I allowed to use?
+# A. This is a .yaml file. You are allowed to use most characters.
+#    To test if your yaml is valid or not, you can use this website:
+#        http://www.yamllint.com/
+#    You can also verify that your Archipelago options are valid at this site:
+#        https://archipelago.gg/check
+
+# Your name in-game, limited to 16 characters.
+#     {player} will be replaced with the player's slot number.
+#     {PLAYER} will be replaced with the player's slot number, if that slot number is greater than 1.
+#     {number} will be replaced with the counter value of the name.
+#     {NUMBER} will be replaced with the counter value of the name, if the counter value is greater than 1.
+name: Naymik-{player}
+
+# Used to describe your yaml. Useful if you have multiple files.
+description: Default Pikmin 2 Template
+
+game: Pikmin 2
+requires:
+  version: 0.6.7 # Version of Archipelago required for this yaml to work as expected.
+  game:
+    Pikmin 2: 0.7.1 # Version of the world required for this yaml to work as expected.
+
+Pikmin 2:
+  ################
+  # Game Options #
+  ################
+  progression_balancing:
+    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
+    # 
+    # A lower setting means more getting stuck. A higher setting means less getting stuck.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-99: 0 # random value between 0 and 99
+    disabled: 0 # equivalent to 0
+    normal: 50 # equivalent to 50
+    extreme: 0 # equivalent to 99
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Full:** ensure everything can be reached and acquired.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    full: 50
+    minimal: 0
+
+  win_condition:
+    # Collect Louie: Beat the Titan Dweevil and collect the King of Bugs
+    # Collect Pokos: Collect a certain number of Pokos, defined by the poko_amount value. Logic and the client do not account for Pokos obtained from enemy corpses.
+    # Collect Treasure: Collect a certain number of treasures, defined by the treasure_amount value.
+    collect_louie: 50
+    collect_pokos: 0
+    collect_treasure: 0
+
+  poko_amount:
+    # When Collect Pokos is selected as the goal, this will control how many Pokos are needed to beat the game. Does nothing in other goals.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 26985
+    10000: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-26985: 0 # random value between 0 and 26985
+
+  treasure_amount:
+    # When Collect Treasures is selected as the goal, this will control how many treasures are needed to beat the game. Does nothing in other goals.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 201
+    201: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-1-201: 0 # random value between 1 and 201
+
+  debt:
+    # Controls how many Pokos need to be collected before Wistful Wild can be accessed.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 15000
+    10000: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-1-15000: 0 # random value between 1 and 15000
+
+  shuffle_caves:
+    # Controls the settings for cave shuffling.
+    # 
+    # No Shuffle: Caves are in their vanilla locations.
+    # Keep Dream Den: Dream Den's location does not change, but all other caves are shuffled.
+    # Wistful Wild Lock: The Wistful Wild caves are guaranteed to be shuffled within Wistful Wild, all other caves are shuffled wherever.
+    # Full Shuffle: All caves are shuffled.
+    # 
+    # If caves are shuffled, Violet Candypop Buds will appear outside of Emergence Cave, and Ivory Candypop Buds will appear in Awakening Wood by the ship.
+    no_shuffle: 50
+    keep_dream_den: 0
+    wistful_wild_lock: 0
+    full_shuffle: 0
+
+  cave_keys:
+    # Controls whether caves are open or closed.
+    # 
+    # All Unlocked: All caves are accessible as in vanilla.
+    # All Locked: Caves require a key to unlock.
+    # 
+    # The keys will always unlock a cave's vanilla location. For example, if you collect the Emergence Cave Entrance Key, it will always unlock the first cave
+    # in Valley of Repose, no matter what cave has been shuffled to that location.
+    # 
+    # Cave keys use the The Key model in game.
+    all_unlocked: 50
+    all_locked: 0
+
+  death_link:
+    # Controls Death Link settings.
+    # 
+    # No Deathlink: Deaths will not be sent or received.
+    # Pikmin Extinction: Deaths received will cause all active Pikmin to die.
+    # Captain Death: Deaths received will cause one of the two captains to die.
+    # Full Random: Deaths received will either cause a Pikmin extinction or a captain death.
+    # 
+    # Deaths will be sent to other games if a Pikmin extinction that ends the day occurs or if both captains die.
+    no_deathlink: 50
+    pikmin_extinction: 0
+    captain_death: 0
+    full_random: 0
+
+  boss_rando:
+    # Controls boss randomization settings.
+    # 
+    # Vanilla: Bosses will be in their vanilla locations.
+    # Shuffle: Bosses will be shuffled.
+    # Full Random: Bosses will be completely random.
+    vanilla: 50
+    shuffle: 0
+    full_random: 0
+
+  enemy_rando:
+    # Controls enemy randomization settings.
+    # Note that this only works in caves.
+    # 
+    # Vanilla: Enemies will be in their vanilla locations.
+    # Full Random: Enemies will be completely random.
+    vanilla: 50
+    full_random: 0
+
+  boss_and_enemy_rando:
+    # Randomizes bosses and enemies together, allowing enemies to be in boss spots and bosses to be in enemy spots.
+    # This setting overrides the enemy rando and boss rando options.
+    # Note that this setting only works in caves, and is extremely experimental and may cause crashes.
+    # 
+    # No: Enemies and bosses will be randomized according to the Boss Rando and Enemy Rando settings. 
+    # Yes: Completely randomize all bosses and enemies. Enemies may be randomized to boss locations, and bosses may be randomized to enemy locations. Overrides other boss/enemy rando settings.
+    'no': 50
+    'yes': 0
+
+  sublevel_shuffle:
+    # Controls sublevel shuffle settings.
+    # 
+    # Vanilla: Sublevels are played through in their normal order.
+    # Shuffled: Sublevels within each cave are shuffled.
+    vanilla: 50
+    shuffled: 0
+
+  onion_shuffle:
+    # Controls onion shuffle settings.
+    # 
+    # Vanilla: Onions will be in their vanilla locations.
+    # Shuffle: Onions will be shuffled.
+    # Exclude Vanilla: Onions will be shuffled, and the onions will not be in their vanilla arrangement (Red in Vor, Blue in AW, Yellow in PP).
+    # In Pool: Onions will be added to the pool. Starting onion will be random.
+    # 
+    # The water around the Blue Onion in Awakening Wood will always be removed. The electric gate will be replaced with a normal gate if the Yellow Onion is in Awakening Wood.
+    vanilla: 50
+    shuffle: 0
+    exclude_vanilla: 0
+    in_pool: 0
+
+  progressive_globes:
+    # Controls whether globes are progressive or not.
+    # 
+    # Non Progressive: Globes will unlock their vanilla area (Spherical Atlas will unlock Awakening Wood, Geographic Projection will unlock Perplexing Pool).
+    # Progressive: The first collected globe will unlock Awakening Wood, and the second will unlock Perplexing Pool.
+    non_progressive: 50
+    progressive: 0
+
+  weapons_in_pool:
+    # Controls whether the Titan Dweevil's weapons can appear in the pool.
+    # 
+    # No: The Titan Dweevil's weapons will only appear on the Titan Dweevil.
+    # Yes: The Titan Dweevil's weapons will appear on the Titan Dweevil and also in the pool. Collecting a weapon from the pool (i.e., before the fight) will remove it from the fight completely.
+    # Collecting all four weapons before the fight will completely trivialize it.
+    'no': 50
+    'yes': 0
+
+  treasure_collection_checks:
+    # Controls whether checks are added for collecting certain numbers of treasure.
+    # 
+    # No: Checks will only exist at in-game locations.
+    # Yes: Checks will be added at certain treasure collection intervals, controllable by other options.
+    'no': 50
+    'yes': 0
+
+  treasure_collection_start_value:
+    # If treasure collection checks are enabled, they will be added starting at this number of treasures collected.
+    # For example, if this is set to 5, the first treasure collection check will be granted by collecting 5 treasures.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 201
+    5: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-1-201: 0 # random value between 1 and 201
+
+  treasure_collection_end_value:
+    # If treasure collection checks are enabled, they will be added ending at this number of treasures collected.
+    # For example, if this is set to 195, the last treasure collection check will be granted by collecting 195 treasures.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 201
+    200: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-1-201: 0 # random value between 1 and 201
+
+  treasure_collection_interval:
+    # If treasure collection checks are enabled, they will be added at this interval.
+    # For example, the starting value is 5, the ending value is 50, and the interval is 10, treasure collection checks will be granted when 5, 15, 25, 35, and 45 treasures are collected.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 201
+    5: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-1-201: 0 # random value between 1 and 201
+
+  poko_collection_checks:
+    # Controls whether checks are added for collecting pokos. Checks will be added at 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, and 100% of the user-selected debt,
+    # coinciding with the in-game messages.
+    # 
+    # No: Checks will only exist at in-game locations.
+    # Yes: Checks will be added at the poko collection interval specified above.
+    'no': 50
+    'yes': 0
+
+  ###########################
+  # Item & Location Options #
+  ###########################
+  local_items:
+    # Forces these items to be in their native world.
+    []
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with the specified amount of these items. Example: "Bomb: 1"
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    []
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []
+
+  plando_items:
+    # Generic items plando.
+    []
+

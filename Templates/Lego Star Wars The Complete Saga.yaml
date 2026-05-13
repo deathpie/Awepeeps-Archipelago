@@ -1,0 +1,1655 @@
+﻿# Q. What is this file?
+# A. This file contains options which allow you to configure your multiworld experience while allowing
+#    others to play how they want as well.
+#
+# Q. How do I use it?
+# A. The options in this file are weighted. This means the higher number you assign to a value, the
+#    more chances you have for that option to be chosen. For example, an option like this:
+#
+#    map_shuffle:
+#      on: 5
+#      off: 15
+#
+#    Means you have 5 chances for map shuffle to occur, and 15 chances for map shuffle to be turned
+#    off.
+#
+# Q. I've never seen a file like this before. What characters am I allowed to use?
+# A. This is a .yaml file. You are allowed to use most characters.
+#    To test if your yaml is valid or not, you can use this website:
+#        http://www.yamllint.com/
+#    You can also verify that your Archipelago options are valid at this site:
+#        https://archipelago.gg/check
+
+# Your name in-game, limited to 16 characters.
+#     {player} will be replaced with the player's slot number.
+#     {PLAYER} will be replaced with the player's slot number, if that slot number is greater than 1.
+#     {number} will be replaced with the counter value of the name.
+#     {NUMBER} will be replaced with the counter value of the name, if the counter value is greater than 1.
+name: Player{number}
+
+# Used to describe your yaml. Useful if you have multiple files.
+description: 'Default Lego Star Wars: The Complete Saga Template'
+
+game: 'Lego Star Wars: The Complete Saga'
+requires:
+  version: 0.6.7 # Version of Archipelago required for this yaml to work as expected.
+  game:
+    'Lego Star Wars: The Complete Saga': 1.4.3 # Version of the world required for this yaml to work as expected.
+
+'Lego Star Wars: The Complete Saga':
+  ################
+  # Game Options #
+  ################
+  progression_balancing:
+    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
+    # 
+    # A lower setting means more getting stuck. A higher setting means less getting stuck.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-99: 0 # random value between 0 and 99
+    disabled: 0 # equivalent to 0
+    normal: 50 # equivalent to 50
+    extreme: 0 # equivalent to 99
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Full:** ensure everything can be reached and acquired.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    full: 50
+    minimal: 0
+
+  ################
+  # Minikit Goal #
+  ################
+  minikit_goal_amount:
+    # Require that a number of Minikits must be acquired as part of your goal.
+    # 
+    # Once the required number of Minikit items have been received/collected, the Minikit goal is completed according to
+    # the *Minikit Goal Completion Method* option (defaulting to interacting with the Minikits display in the outside
+    # junkyard area of the Cantina).
+    # 
+    # The number of Minikits required to goal is shown in the Hints shop in the Cantina.
+    # 
+    # Current progress towards the goal can be seen on the Pause screen.
+    # 
+    # If set to zero, Minikits will not be part of the goal, but will still be in the item pool as filler items if Minikit
+    # locations are enabled.
+    # 
+    # If set to non-zero, and Minikit locations are disabled, the *Minikit Bundle Size* will be forcefully set to 10.
+    # 
+    # Each enabled episode chapter shuffles 10 Minikits into the item pool, which may be bundled to reduce the number
+    # Minikit items in the item pool.
+    # 
+    # Setting this option to **Use Percentage Option** will use the *Minikit Goal Amount Percentage* option's value to
+    # determine how many Minikit's are required to goal.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 360
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-360: 0 # random value between 0 and 360
+    use_percentage_option: 50 # equivalent to -1
+
+  minikit_goal_amount_percentage:
+    # The percentage of Minikits in the item pool that must be acquired as part of your goal.
+    # 
+    # 10 Minikits are added to the item pool for each enabled episode chapter, which may be bundled to reduce the number
+    # of individual items.
+    # 
+    # This does nothing unless the *Minikit Goal Amount* option is set to *Use Percentage Option* instead of a number.
+    # 
+    # The final number of Minikits required to goal is rounded to the nearest integer, but will always be at least 1.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 100
+    75: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-1-100: 0 # random value between 1 and 100
+
+  minikit_goal_completion_method:
+    # Choose how the Minikit Goal is completed.
+    # 
+    # **Instant:** The Minikit Goal is completed as soon as you have enough Minikit items to meet your goal. It is
+    # recommended to enable a Goal Chapter when the Minikit Goal Completion Method is set to Instant.
+    # 
+    # **Junkyard Minikit Display:** Once you have enough Minikit items to meet your goal, the goal must be completed by
+    # using the Minikit Display in the outside Junkyard area of the Cantina.
+    instant: 0
+    junkyard_minikit_display: 50
+
+  ###############
+  # Bosses Goal #
+  ###############
+  defeat_bosses_goal_amount:
+    # Choose how many bosses must be defeated to goal.
+    # 
+    # If set to zero, bosses will not be part of the goal.
+    # 
+    # **The Chapter a boss is in must be completed for defeating the boss to count.**
+    # 
+    # The bosses that count towards your goal are shown in the Hints shop in the Cantina.
+    # 
+    # Current progress towards the goal can be seen on the Pause screen. Individual progress within an Episode can be seen
+    # by standing in front of the door to that Episode once the door is unlocked.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 17
+    0: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-17: 0 # random value between 0 and 17
+
+  enabled_bosses_count:
+    # Choose the number of bosses that will be present in the world and count towards your goal.
+    # 
+    # More chapters containing bosses than this count can end up in the generated world. If this happens, some of them
+    # will not count towards the goal.
+    # 
+    # This will automatically be set at least as high as the number of bosses required to goal.
+    # 
+    # This will automatically be set no higher than the maximum of the number of allowed bosses in allowed Chapters.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 17
+    0: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-17: 0 # random value between 0 and 17
+
+  allowed_bosses:
+    # Choose bosses that count towards the Defeat Bosses Goal.
+    # 
+    # When bosses must be defeated as part of the goal, the Chapters for the bosses in this list will be added to Allowed
+    # Chapters list if they are not already in Allowed Chapters list.
+    # 
+    # allowed_bosses:
+    # 
+    # - Darth Maul (1-6) # Darth Maul
+    # - Zam Wesell (2-1) # Bounty Hunter Pursuit
+    # - Jango Fett (2-2) # Discovery On Kamino
+    # - Jango Fett (2-4) # Jedi Battle
+    # - Count Dooku (2-6) # Count Dooku
+    # - Count Dooku (3-2) # Chancellor In Peril
+    # - General Grievous (3-3) # General Grievous
+    # - Anakin Skywalker (3-6) # Darth Vader
+    # - Imperial Spy (4-3) # Mos Eisley Spaceport
+    # - Death Star (4-6) # Rebel Attack
+    # - Darth Vader (5-4) # Dagobah
+    # - Darth Vader (5-5) # Cloud City Trap
+    # - Boba Fett (5-6) # Betrayal Over Bespin
+    # - Rancor (6-1) # Jabba's Palace
+    # - Boba Fett (6-2) # The Great Pit Of Carkoon
+    # - Darth Sidious (6-5) # Jedi Destiny
+    # - Death Star II (6-6) # Into The Death Star
+    ['Darth Maul (1-6)', 'Zam Wesell (2-1)', 'Jango Fett (2-2)', 'Jango Fett (2-4)', 'Count Dooku (2-6)', 'Count Dooku (3-2)', 'General Grievous (3-3)', 'Anakin Skywalker (3-6)', 'Imperial Spy (4-3)', 'Death Star (4-6)', 'Darth Vader (5-4)', 'Darth Vader (5-5)', 'Boba Fett (5-6)', 'Rancor (6-1)', 'Boba Fett (6-2)', 'Darth Sidious (6-5)', 'Death Star II (6-6)']
+
+  only_unique_bosses_count:
+    # When enabled, only unique bosses will count towards your goal. Defeating the same boss character in two separate
+    # Chapters will only count as one boss kill.
+    # 
+    # When unique bosses are enabled, the maximum number of bosses that can count towards the goal will be reduced to 13,
+    # or 12 when Anakin Skywalker counts as the same boss as Darth Vader.
+    disabled: 50
+    enabled: 0
+    enabled_and_count_anakin_as_vader: 0
+
+  ################
+  # Goal Chapter #
+  ################
+  goal_chapter:
+    # Choose a Goal Chapter that must be completed as the final part of your goal.
+    # 
+    # All other enabled goals must be completed to unlock the Goal Chapter, in addition to the Goal Chapter's usual
+    # requirements.
+    # 
+    # The Goal Chapter, when enabled, is picked separately from regular Chapters, ignoring the Allowed Chapters option
+    # used when picking regular Chapters.
+    # 
+    # The Goal Chapter is enabled in addition to your *Enabled Chapter Count*, when possible.
+    # 
+    # The Goal Chapter does not contribute towards other goals, it does not add Minikit items to the item pool, and will
+    # never contain an enabled boss.
+    no_goal_chapter: 50
+    1-1: 0
+    1-2: 0
+    1-3: 0
+    1-4: 0
+    1-5: 0
+    1-6: 0
+    2-1: 0
+    2-2: 0
+    2-3: 0
+    2-4: 0
+    2-5: 0
+    2-6: 0
+    3-1: 0
+    3-2: 0
+    3-3: 0
+    3-4: 0
+    3-5: 0
+    3-6: 0
+    4-1: 0
+    4-2: 0
+    4-3: 0
+    4-4: 0
+    4-5: 0
+    4-6: 0
+    5-1: 0
+    5-2: 0
+    5-3: 0
+    5-4: 0
+    5-5: 0
+    5-6: 0
+    6-1: 0
+    6-2: 0
+    6-3: 0
+    6-4: 0
+    6-5: 0
+    6-6: 0
+
+  goal_chapter_locations_mode:
+    # Choose how locations within the Goal Chapter are generated.
+    # 
+    # **Removed:** Locations within the Goal Chapter are removed from the multiworld. Gold Bricks from the Goal Chapter
+    # will not be included in Gold Brick logic.
+    # 
+    # **Excluded:** Locations within the Goal Chapter are marked as Excluded, disallowing Progression and Useful items
+    # being placed there. Gold Bricks from the Goal Chapter will not be included in Gold Brick logic. Locations accessible
+    # from both the Goal Chapter and from some other enabled Chapter, will also be marked as Excluded.
+    # 
+    # **Normal:** No changes will be made to the locations in the Goal Chapter, or to Gold Brick logic. Not recommended
+    # unless playing without ``!release`` after goaling.
+    removed: 50
+    excluded: 0
+    normal: 0
+
+  ###############
+  # Other Goals #
+  ###############
+  complete_levels_goal_amount_percentage:
+    # Require that a percentage of enabled Chapters and Gold Brick Door Bonuses (if Bonuses are enabled) must be completed
+    # as part of your goal.
+    # 
+    # The final number of levels that must be completed to goal is rounded to the nearest integer, but will always be at
+    # least 1 if the percentage is greater than 0.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    0: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  goal_requires_kyber_bricks:
+    # Require that 7 Kyber Brick items must be acquired as part of your goal.
+    # 
+    # The 7 Kyber Brick items only contribute to your goal and do nothing else. There are only 7 added to the item pool
+    # when this option is enabled.
+    # 
+    # It is recommended to enable a Goal Chapter when the Kyber Bricks Goal is enabled.
+    'false': 50
+    'true': 0
+
+  kyber_brick_goal_completion_method:
+    # Set how the Kyber Brick part of the Goal is completed.
+    # 
+    # **Instant:** The Kyber Brick goal is completed as soon as 7 Kyber Brick items are acquired. It is recommended to
+    # enable a Goal Chapter when the Kyber Brick Goal Completion Method is set to Instant.
+    instant: 50
+
+  ############
+  # Chapters #
+  ############
+  enabled_chapters_count:
+    # Choose how many chapters will exist in your slot.
+    # 
+    # Chapters, other than the Starting Chapter and Goal Chapter, if enabled, will be randomly picked from the Allowed
+    # Chapters list.
+    # 
+    # If there are fewer allowed chapters than the count to enable, all the allowed chapters will be enabled, and the
+    # count will be reduced to the maximum possible.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 36
+    18: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-1-36: 0 # random value between 1 and 36
+
+  allowed_chapters:
+    # Choose the chapter levels that are allowed to be picked when randomly choosing which chapters will exist in your
+    # slot.
+    # 
+    # The Starting Chapter and Goal Chapter options ignore the allowed list of chapters when they are set to specific
+    # chapters.
+    # 
+    # When your goal is set to require defeating bosses, all Allowed Boss Chapters will be added into the Allowed
+    # Chapters option.
+    # 
+    # Individual chapters can be specified, e.g. "1-1", "5-4".
+    # 
+    # Special values:
+    # 
+    # - "All": All chapters will be allowed.
+    # - "Prequel Trilogy": All chapters in episodes 1, 2 and 3 will be allowed.
+    # - "Original Trilogy": All chapters in episode 4, 5 and 6 will be allowed.
+    # - "Episode {number}": e.g. "Episode 3" will allow all chapters in Episode 3, so 3-1 through to 3-6.
+    # 
+    # Examples::
+    # 
+    #     # Enable only 1-1 (Negotiations)
+    #     allowed_chapters: ["1-1"]
+    # 
+    #     # Enable only 1-1 (Negotiations) (alt.)
+    #     allowed_chapters:
+    #       - 1-1
+    # 
+    #     # Enable all
+    #     allowed_chapters: ["All"]
+    # 
+    #     # Enable all (alt.)
+    #     allowed_chapters:
+    #       - All
+    # 
+    #     # Enable only vehicle levels
+    #     allowed_chapters:
+    #       - 1-4
+    #       - 2-2
+    #       - 2-5
+    #       - 3-1
+    #       - 4-6
+    #       - 5-1
+    #       - 5-3
+    #       - 6-6
+    # 
+    #     # A mix of values
+    #     allowed_chapters:
+    #       - Prequel Trilogy
+    #       - Episode 4
+    #       - 5-2
+    #       - 5-3
+    #       - 6-5
+    ['All']
+
+  allowed_chapter_types:
+    # Specify additional filtering of the allowed chapters that can exist in your slot.
+    # 
+    # **All:** No additional filtering, all chapters specified in the Allowed Chapters option are allowed.
+    # **No Vehicles:** No vehicle chapters (1-4, 2-1, 2-5, 3-1, 4-6, 5-1, 5-3, 6-6) will be allowed to exist in your slot.
+    all: 50
+    no_vehicles: 0
+
+  starting_chapter:
+    # Choose the starting chapter.
+    # 
+    # All items required to access and complete the starting chapter will be given to you from the start.
+    1-1: 50
+    1-2: 0
+    1-3: 0
+    1-4: 0
+    1-5: 0
+    1-6: 0
+    2-1: 0
+    2-2: 0
+    2-3: 0
+    2-4: 0
+    2-5: 0
+    2-6: 0
+    3-1: 0
+    3-2: 0
+    3-3: 0
+    3-4: 0
+    3-5: 0
+    3-6: 0
+    4-1: 0
+    4-2: 0
+    4-3: 0
+    4-4: 0
+    4-5: 0
+    4-6: 0
+    5-1: 0
+    5-2: 0
+    5-3: 0
+    5-4: 0
+    5-5: 0
+    5-6: 0
+    6-1: 0
+    6-2: 0
+    6-3: 0
+    6-4: 0
+    6-5: 0
+    6-6: 0
+    random_chapter: 0
+    random_non_vehicle: 0
+    random_vehicle: 0
+    random_episode_1: 0
+    random_episode_2: 0
+    random_episode_3: 0
+    random_episode_4: 0
+    random_episode_5: 0
+    random_episode_6: 0
+
+  preferred_chapters:
+    # When the generator picks which chapters should exist in your slot, it will pick from these preferred chapters first.
+    # 
+    # If a preferred chapter is not allowed to be picked because it is not included in the Allowed Chapters option, it
+    # will not be picked.
+    # 
+    # This option can be used to guarantee that certain chapters are present in a generated world.
+    # 
+    # Individual chapters can be specified, e.g. "1-1", "5-4".
+    # 
+    # Special values:
+    # 
+    # - "Prequel Trilogy": All chapters in episodes 1, 2 and 3 will be preferred.
+    # - "Original Trilogy": All chapters in episode 4, 5 and 6 will be preferred.
+    # - "Episode {number}": e.g. "Episode 3" will make all chapters in Episode 3, so 3-1 through to 3-6, be preferred.
+    # 
+    # Examples::
+    # 
+    #     # Prefer 1-1 (Negotiations)
+    #     preferred_chapters: ["1-1"]
+    # 
+    #     # Prefer 1-1 (Negotiations) (alt.)
+    #     preferred_chapters:
+    #       - 1-1
+    # 
+    #     # Prefer vehicle levels
+    #     preferred_chapters:
+    #       - 1-4
+    #       - 2-2
+    #       - 2-5
+    #       - 3-1
+    #       - 4-6
+    #       - 5-1
+    #       - 5-3
+    #       - 6-6
+    # 
+    #     # A mix of values
+    #     preferred_chapters:
+    #       - Prequel Trilogy
+    #       - Episode 4
+    #       - 5-2
+    #       - 5-3
+    #       - 6-5
+    []
+
+  prefer_entire_episodes:
+    # When enabled, after the generator has picked a chapter to exist in your slot, out of the allowed chapters, it will
+    # continue picking additional chapters from the same episode until it runs out of allowed chapters in that episode.
+    # 
+    # For example, if the generator picks 3-2 as the first enabled chapter, its next picked chapters will be guaranteed to
+    # be picked from the allowed chapters out of 3-1, 3-3, 3-4, 3-5 and 3-6.
+    # 
+    # The Starting Chapter is always the first picked enabled chapter.
+    # 
+    # With all chapters allowed to exist in your slot, and an Enabled Chapters Count set to a multiple of 6, this option
+    # will result in whole episodes being enabled.
+    'false': 50
+    'true': 0
+
+  #####################
+  # Enabled Locations #
+  #####################
+  enable_minikit_locations:
+    # Enable locations for collecting each Minikit in each Chapter that exists in your slot.
+    # 
+    # Minikit locations are progressive within each Chapter (to be changed in the future), so collecting 4 Minikits in any
+    # order in a Chapter will send the location checks for Minikit 1, Minikit 2, Minikit 3 and Minikit 4, in that Chapter,
+    # in order.
+    # 
+    # All Minikit locations in a Chapter enter logic at the same time, when it is logically possible to reach all Minikit
+    # locations in that Chapter (to be changed in the future).
+    # 
+    # If Minikit locations are not enabled, but the goal requires Minikit items, the Minikit Bundle Size will be
+    # forcefully set to 10.
+    # 
+    # When Minikit locations are not enabled, Bonus levels will not consider the Gold Bricks, awarded for getting all 10
+    # Minikit locations in a Chapter, as part of Gold Brick logic.
+    'false': 0
+    'true': 50
+
+  enable_true_jedi_locations:
+    # Enable locations for completing True Jedi in each Chapter that exists in your slot.
+    # 
+    # Some True Jedi locations logically expect 1 Progressive Score Multiplier because they are otherwise too difficult or
+    # impossible with only the minimal characters to complete the Chapter:
+    # 
+    # - 1-6
+    # - 2-6
+    # - 3-3
+    # - 3-5
+    # - 3-6
+    # - 5-1
+    # - 5-2
+    # - 5-6
+    # - 6-5
+    # 
+    # The logic for difficult True Jedi is intended to be reworked in the future to account for additional characters
+    # giving access to more studs within a Chapter, therefore making True Jedi easier to complete.
+    # 
+    # When True Jedi locations are not enabled, Bonus levels will not consider True Jedi Gold Bricks as part of Gold Brick
+    # logic.
+    'false': 0
+    'true': 50
+
+  enable_story_character_unlock_locations:
+    # Enable locations for unlocking Story mode characters that would normally unlock when completing a Chapter/Bonus in
+    # vanilla.
+    # 
+    # In vanilla, completing any Chapter/Bonus with C-3PO as a playable Story mode character would unlock C-3PO. In
+    # vanilla, this would mean completing either 2-3, 4-1, 5-2, 6-1 or A New Hope, because Chapters within an Episode
+    # unlock in order in vanilla, but the AP randomizer allows for Chapters to be unlocked out-of-order, so, additionally,
+    # completing any of 4-2, 4-3, 4-4, 4-5, 5-6, 6-2 or 6-4, would also send the Story Character Unlock location for
+    # C-3PO.
+    # 
+    # The first Chapter/Bonus completed that would unlock a Story mode character will send the Unlock location for that
+    # character.
+    # 
+    # Because Story mode is skipped in the AP randomizer, these character unlock locations are sent when the Chapters are
+    # completed in Free Play.
+    # 
+    # With all 36 Chapters enabled, this adds 56 locations.
+    # With all 36 Chapters and all Bonuses enabled, this adds 57 locations.
+    'false': 0
+    'true': 50
+
+  enable_bonus_locations:
+    # The Bonuses Door in the Cantina has a number of levels that require Gold Bricks to access. When this option is
+    # enabled, completing each of these Bonus levels (in Story Mode if they have a Story mode) will be a location to
+    # check.
+    # 
+    # Additionally, watching the Lego Indiana Jones trailer (it can be skipped once started), and purchasing Indiana Jones
+    # from the shop are added as locations to check.
+    # 
+    # Gold Brick logic currently only counts Gold Bricks earned from Chapter completion, True Jedi, 10/10 Minikits in a
+    # Chapter, and the singular Gold Bricks awarded for completing other Bonus levels. The True Jedi and 10/10 Minikits
+    # Gold Bricks are not included in Gold Brick logic if the corresponding locations are disabled.
+    # 
+    # Depending on other options, not all Chapters could exist in your slot, so if there are not enough Gold Bricks
+    # logically available for a Bonus level to be accessible, that Bonus level will not be included in the multiworld.
+    # 
+    # With all Chapters enabled, this adds 8 locations.
+    'false': 50
+    'true': 0
+
+  enable_all_episodes_purchases:
+    # Enable the expensive character purchase locations for *IG-88*, *Dengar*, *4-LOM*, *Ben Kenobi (Ghost)*,
+    # *Anakin Skywalker (Ghost)*, *Yoda (Ghost)* and *R2-Q5*.
+    # 
+    # In vanilla, these locations unlock after completing Story mode for every chapter, but the AP randomizer changes
+    # these shop purchases to unlock according to the All Episodes Character Purchase Requirements option.
+    # 
+    # Even when the locations are disabled, the vanilla characters, *IG-88*, *Dengar* etc. may still be added to the item
+    # pool.
+    # 
+    # Attempting to purchase the vanilla characters from the shop while the locations are disabled will not unlock the
+    # vanilla characters.
+    # 
+    # This adds 7 locations.
+    'false': 50
+    'true': 0
+
+  enable_starting_extras_locations:
+    # Enable locations for purchasing the Extras from the shop that do not require Power Bricks to unlock, and allow those
+    # Extras to be shuffled into the item pool.
+    # 
+    # Adds 7 locations usually accessible from the start.
+    # 
+    # These are:
+    # 
+    # - Purchase Extra Toggle
+    # - Purchase Fertilizer
+    # - Purchase Disguise
+    # - Purchase Daisy Chains
+    # - Purchase Chewbacca Carrying C-3PO
+    # - Purchase Tow Death Star
+    # - Purchase Beep Beep
+    # 
+    # They are all classified as Filler items, except Extra Toggle, which is classified as Useful because of Mouse Droid's
+    # high movement speed and a few Extra Toggle characters having abilities (in the future Extra Toggle will be
+    # Progression).
+    # 
+    # If this option is not enabled, the locations will still exist in the multiworld, but will always contain their
+    # vanilla items.
+    'false': 0
+    'true': 50
+
+  ridesanity:
+    # Enable locations for riding each unique type of ridable 'character' (creature, vehicle, turret, crane control) in
+    # the game.
+    # 
+    # This notably adds a few extra checks to the LEGO City and New Town bonus levels.
+    # 
+    # If none of your enabled levels contain a specific ridable character, then the location riding for that character
+    # will not exist in the generated world.
+    # 
+    # Ridesanity adds up to 28 locations.
+    # 
+    # There are 28 unique ridable characters:
+    # 
+    # - AT-AT (6-3)
+    # - AT-ST (4-3, 6-3, 6-4, LEGO City)
+    # - Bantha (4-2, LEGO City, New Town)
+    # - Basketball Cannon (New Town)
+    # - Big Skiff Cannon (6-2)
+    # - B'omarr Monk (6-1)
+    # - Cantina Car (Cantina)
+    # - Clone Walker (3-4, New Town)
+    # - Cloud Car (5-6, LEGO City, New Town) (the red car)
+    # - Crane Control (4-1, 4-4, 4-5, 5-5, 5-6) (also controls Magnets, Window Cleaners and Turbolasers)
+    # - Dewback (4-2, 4-3, LEGO City, New Town)
+    # - Ewok Catapult (6-4)
+    # - Firetruck (New Town)
+    # - Flash Speeder (1-5)
+    # - Landspeeder (4-2, 4-3, LEGO City, New Town)
+    # - Lifeboat (New Town)
+    # - Moon Car (4-1, LEGO City, New Town) (the orange car)
+    # - Mos Eisley Cannon (4-3) (used to get a Minikit)
+    # - Service Car (1-5, 1-6, 4-5) (the floating car with no wheels)
+    # - Skiff Cannon (6-2)
+    # - Speeder Bike (6-3)
+    # - Snowmobile (5-2)
+    # - STAP (1-1)
+    # - Stormtrooper Cannon (5-2, 5-5)
+    # - Tauntaun (5-2, LEGO City, New Town)
+    # - Town Car (4-1, LEGO City, New Town) (the white van-like car)
+    # - Tractor (5-4, 6-4, LEGO City, New Town)
+    # - Wookie Flyer (LEGO City)
+    'false': 50
+    'true': 0
+
+  #######################
+  # Unlock Requirements #
+  #######################
+  episode_unlock_requirement:
+    # Choose how Episodes are unlocked.
+    # 
+    # The game client forces open all Episode doors in the Cantina, but all Chapters within an Episode will remain locked
+    # if an Episode unlock item is required to unlock the Episode.
+    # 
+    # The Episode of your starting Chapter will always be unlocked from the start.
+    # 
+    # **Open:** All Episodes will be unlocked from the start.
+    # 
+    # **Episode Item:** Each Episode will unlock after receiving an unlock item for that Episode, e.g. "Episode 5 Unlock".
+    # Warning: Episode unlock items typically lock access to about 1/6 of your game each, which can result in long periods
+    # of not being able to do any checks, when playing in multiworlds with other players.
+    open: 50
+    episode_item: 0
+
+  chapter_unlock_requirement:
+    # Choose how Chapters within an Episode are unlocked.
+    # 
+    # The requirements to access and complete your starting Chapter will be given to you at the start.
+    # 
+    # The items you are missing to unlock a Chapter are shown in-game when standing in-front of a locked Chapter's door.
+    # 
+    # **Vanilla Characters:** A Chapter unlocks once its Vanilla characters (those from Story mode, or optionally those
+    # that are available for Purchase after completing the Chapter in Vanilla) have been found/received. The count
+    # required to unlock the Chapter can be adjusted with a separate option.
+    # 
+    # **Chapter Item:** A Chapter unlocks after receiving an unlock item specific to that Chapter, e.g. "Chapter 2-3
+    # Unlock".
+    # 
+    # **Random Characters:** Each Chapter requires randomly chosen characters to unlock.
+    # 
+    # **Open (not implemented):** All chapters within an Episode are unlocked as soon as the Episode is unlocked.
+    vanilla_characters: 50
+    chapter_item: 0
+    random_characters: 0
+
+  all_episodes_character_purchase_requirements:
+    # The vanilla unlock requirements for purchasing IG-88, Dengar, 4-LOM, Ben Kenobi (Ghost), Anakin Skywalker
+    # (Ghost), Yoda (Ghost) and R2-Q5 from the shop, are completing every Story mode chapter. The randomizer changes this
+    # unlock condition because completing every Story mode chapter is unreasonable in most multiworlds and is impossible
+    # if not all chapters are enabled.
+    # 
+    # **Episodes Unlocked:** The shop purchases will unlock when the "Episode # Unlock" item for each Episode with enabled
+    # Chapters has been received. If the Episode Unlock Requirement is set to Open or there is only 1 enabled Episode,
+    # this will be forcefully changed to "Episodes Tokens" instead.
+    # **Episodes Tokens:** 6 "Episode Completion Token" items need to be acquired to unlock the characters for purchase.
+    # The number of "Episode Completion Token" items in the item pool is equal to your number of enabled chapters divided
+    # by 6 and rounded to the nearest integer, but always at least 1. The remaining "Episode Completion Token" items will
+    # be added to your starting inventory. For example, if you have 28 chapters enabled, 28 / 6 = 4.666 -> 5 in the pool
+    # and 1 in your starting inventory.
+    episodes_unlocked: 0
+    episodes_tokens: 50
+
+  ########################
+  # Logic and Difficulty #
+  ########################
+  easier_true_jedi:
+    # When enabled, the True Jedi requirements in Free Play will be set to the Story True Jedi requirement, which is
+    # usually less.
+    # 
+    # True Jedi in Free Play usually has higher requirements than True Jedi in Story and can be very difficult, if not
+    # impossible, with just the Story characters for that Chapter.
+    # 
+    # Without this option enabled, the following Chapters will gain a logical requirement for Score x2 due to their
+    # difficulty/impossibility of achieving True Jedi in Free Play with just the Story characters for the Chapter:
+    # 
+    # - 1-6
+    # - 2-6
+    # - 3-3
+    # - 3-5
+    # - 3-6
+    # - 5-1
+    # - 5-2
+    # - 5-6
+    # - 6-5
+    'false': 50
+    'true': 0
+
+  scale_true_jedi_with_score_multipliers:
+    # Scale True Jedi requirements with the number of Progressive Score Multipliers acquired.
+    # 
+    # If Easier True Jedi is not enabled, the True Jedi that logically require Score x2 will also scale but only with
+    # Score x4 and higher.
+    # 
+    # The scaling is applied only when entering a Chapter and will not adjust dynamically if you receive/find additional
+    # Progressive Score Multiplier items while within the entered Chapter.
+    'false': 50
+    'true': 0
+
+  most_expensive_purchase_with_no_multiplier:
+    # The most expensive individual purchase the player can be expected to make without any score multipliers, *in
+    # thousands of Studs* (number of Blue Studs).
+    # 
+    # For example, an option value of 100 means that purchases up to 100,000 studs in price can be expected to be
+    # purchased without any score multipliers.
+    # 
+    # The logical requirements for expensive purchases will scale with this value. For example, if a purchase of up to
+    # 100,000 Studs is expected with no score multipliers, then a purchase of 100,001 up to 200,000 Studs is expected with
+    # a score multiplier of 2x.
+    # 
+    # "Score x2" costs 1.25 million studs (1250 * 1000) in vanilla, so, for a more vanilla experience with potentially
+    # more farming for Studs, set this option to 1250.
+    # 
+    # The most expensive purchase is "Score x10", which costs 20 million studs (20000 * 1000). Setting this options to
+    # 20000 means that all purchases are logically expected without score multipliers.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 6
+    # Maximum value is 20000
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-6-20000: 0 # random value between 6 and 20000
+    minimum_(6000_studs): 0 # equivalent to 6
+    10000_studs: 0 # equivalent to 10
+    25000_studs: 0 # equivalent to 25
+    50000_studs: 0 # equivalent to 50
+    75000_studs: 0 # equivalent to 75
+    default_(100000_studs): 50 # equivalent to 100
+    250000_studs: 0 # equivalent to 250
+    500000_studs: 0 # equivalent to 500
+    750000_studs: 0 # equivalent to 750
+    1_million_studs: 0 # equivalent to 1000
+    vanilla_(1.25_million_studs): 0 # equivalent to 1250
+    2.5_million_studs: 0 # equivalent to 2500
+    5_million_studs: 0 # equivalent to 5000
+    7.5_million_studs: 0 # equivalent to 7500
+    10_million_studs: 0 # equivalent to 10000
+    no_score_multipliers_expected: 0 # equivalent to 20000
+
+  ################################################
+  # Chapter Unlock Requirement: Characters (any) #
+  ################################################
+  chapter_unlock_characters_min_count:
+    # When Chapters are locked by needing specific Characters, choose the minimum number of Characters that are needed.
+    # 
+    # If Chapters are set to require Vanilla Characters to unlock, the required count for a Chapter will never be more
+    # than the number of Vanilla Characters for that Chapter.
+    # 
+    # The starting Chapter will always use this minimum required count.
+    # 
+    # Most chapters have a maximum of around 3 to 5 Characters.
+    # The highest vanilla Story mode Characters requirement, is 7, for The Great Pit Of Carkoon (6-2).
+    # The highest vanilla Purchase Characters requirement, is 9, for Jedi Battle (2-4).
+    # 
+    # This option does nothing if Chapters are not set to require Vanilla/Random Characters to unlock.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 5
+    1: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-1-5: 0 # random value between 1 and 5
+
+  chapter_unlock_characters_max_count:
+    # When Chapters are set to unlock by needing specific Characters, choose the maximum number of Characters that are
+    # needed.
+    # 
+    # If Chapters are set to require Vanilla Characters to unlock, the required count for a Chapter will never be more
+    # than the number of Vanilla Characters for that Chapter.
+    # 
+    # The Goal Chapter, if enabled, will always use this maximum required count.
+    # 
+    # Most chapters have a maximum of around 3 to 5 Characters.
+    # The highest vanilla Story mode Characters requirement, is 7, for The Great Pit Of Carkoon (6-2).
+    # The highest vanilla Purchase Characters requirement, is 9, for Jedi Battle (2-4).
+    # 
+    # This option does nothing if Chapters are not set to require Vanilla/Random Characters to unlock.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 9
+    5: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-1-9: 0 # random value between 1 and 9
+
+  chapter_unlock_characters_count_distribution:
+    # When the Max Required Count is greater than the Min Required Count, choose how the generator randomly picks
+    # between the Min and the Max.
+    # 
+    # **Uniform:** Pick between the Min and Max with equal chance.
+    # 
+    # **Low:** More likely to pick lower values, similar to random-range-low-{min}-{max}.
+    # 
+    # **Middle:** More likely to pick values in the middle of the range, similar to random-range-middle-{min}-{max}.
+    # 
+    # **High:** More like to pick higher values, similar to random-range-high-{min}-{max}.
+    uniform: 50
+    low: 0
+    middle: 0
+    high: 0
+
+  ##################################################
+  # Chapter Unlock Requirement: Vanilla Characters #
+  ##################################################
+  chapter_unlock_story_characters_not_required:
+    # When the unlock requirement for Chapters is set to Story Characters, disable specific commonly required Story
+    # Characters from contributing towards unlocking Chapters.
+    # 
+    # ``R2-D2``, ``C-3PO`` and ``Chewbacca`` are the only characters supported by this option because of the large number
+    # of Chapters they can each lock access to.
+    # 
+    # Note that the ``{episode}-{chapter} Story Unlock Characters`` item groups will still include these characters, even
+    # if the characters are set to not be required.
+    # 
+    # Example that disables all three:
+    # 
+    # - R2-D2 # can lock up to 15 Chapters.
+    # - C-3PO # can lock up to 11 Chapters.
+    # - Chewbacca # can lock up to 9 Chapters.
+    # 
+    # This option only affects Chapters that are set to require Story Characters to unlock.
+    []
+
+  chapters_that_can_require_purchase_characters:
+    # When the unlock requirement for Chapters is set to Vanilla Characters, instead of requiring the Story Characters
+    # to unlock these Chapters, chapters can instead be set to require the Characters that would, in the vanilla game,
+    # become available for purchase from the Cantina Shop after completing the Chapter.
+    # 
+    # A common use of this is to give some Chapters within the same Episode more varied unlock requirements because it is
+    # common for many Chapters within an Episode to require some of the same Story Characters.
+    # 
+    # Not all Chapters, in the vanilla game, make Characters available for purchase from the Cantina Shop after completing
+    # the Chapter, so these chapters are not available for this option:
+    # 
+    # - 1-5
+    # - 2-5
+    # - 2-6
+    # - 3-6
+    # - 4-5
+    # - 5-1
+    # - 5-4
+    # - 5-5
+    # - 6-3
+    # 
+    # All other Chapters can be specified using their shorthand names, for example:
+    # 
+    # - 1-2  # Change 1-2 to require Captain Tarpals and Boss Nass
+    # - 3-5  # Change 3-5 to require Mace Windu (Episode 3) and Disguised Clone
+    # - 5-3  # Change 5-3 to require TIE Bomber and Imperial Shuttle
+    # 
+    # This option does nothing if Chapters are not set to require Story Characters to unlock.
+    ['1-1', '1-2', '1-3', '1-4', '1-6', '2-1', '2-2', '2-3', '2-4', '3-1', '3-2', '3-3', '3-4', '3-5', '4-1', '4-2', '4-3', '4-4', '4-6', '5-2', '5-3', '5-6', '6-1', '6-2', '6-4', '6-5', '6-6']
+
+  require_purchase_characters_chance:
+    # Set the chance that a chapter rolls as requiring vanilla Purchase Characters to unlock instead of vanilla Story
+    # Characters.
+    # 
+    # Only affects chapters that have been allowed to require vanilla Purchase Characters, instead of vanilla Story
+    # characters, to unlock.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    0: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+    use_custom_chance_per_chapter_option: 0 # equivalent to -1
+
+  require_purchase_characters_custom_chances:
+    # Individually set the chance that a chapter rolls as requiring Purchase Characters to unlock instead of Story
+    # Characters.
+    # 
+    # Will not do anything unless Require Purchase Characters Chance is set to Use Custom Chance Per Chapter Option.
+    # 
+    # A Chapter not being present in this option is the same as giving it a 0% chance.
+    1-1: 50
+    1-2: 50
+    1-3: 50
+    1-4: 50
+    1-6: 50
+    2-1: 50
+    2-2: 50
+    2-3: 50
+    2-4: 50
+    3-1: 50
+    3-2: 50
+    3-3: 50
+    3-4: 50
+    3-5: 50
+    4-1: 50
+    4-2: 50
+    4-3: 50
+    4-4: 50
+    4-6: 50
+    5-2: 50
+    5-3: 50
+    5-6: 50
+    6-1: 50
+    6-2: 50
+    6-4: 50
+    6-5: 50
+    6-6: 50
+
+  #################################################
+  # Chapter Unlock Requirement: Random Characters #
+  #################################################
+  chapter_unlock_random_characters_extra_min_count:
+    # When Chapters are set to unlock by needing randomly chosen Characters, increase the number of characters that
+    # contribute to unlocking a Chapter by at least this many.
+    # 
+    # For example, if a Chapter rolls as requiring 4/4 Characters to unlock it, and this option is set to 1, an additional
+    # Character will be added to the Chapter's requirements, but the number of characters required will remain at 4, so
+    # any 4/5 of the Chapter's requirements will unlock the Chapter.
+    # 
+    # The maximum number of Characters that can be included in a Chapter's unlock requirements is capped at 9 because
+    # the in-game text that displays what Characters unlock a Chapter becomes squished and difficult to read when there
+    # are many Characters.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 3
+    0: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-3: 0 # random value between 0 and 3
+
+  chapter_unlock_random_characters_extra_max_count:
+    # When Chapters are set to unlock by needing randomly chosen Characters, increase the number of characters that
+    # contribute to unlocking a Chapter by up to this many.
+    # 
+    # For example, if a Chapter rolls as requiring 4/4 Characters to unlock it, and this option is set to 1 (and the
+    # minimum extra is set to 0), there will be a 50% chance (0 or 1) that an additional Character will be added to the
+    # Chapter's requirements, but the number of characters required will remain at 4, so any 4/5 of the Chapter's
+    # requirements will unlock the Chapter.
+    # 
+    # The maximum number of Characters that can be included in a Chapter's unlock requirements is capped at 9 because
+    # the in-game text that displays what Characters unlock a Chapter becomes squished and difficult to read when there
+    # are many Characters.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 3
+    2: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-3: 0 # random value between 0 and 3
+
+  chapter_unlock_random_characters_unique_per_chapter:
+    # When Chapters are set to unlock by needing randomly chosen Characters, choose how many unique characters can be
+    # randomly picked from to be used in Chapter unlock requirements. The option value is multiplied by the number of
+    # Chapters that exist in your slot.
+    # 
+    # For example, if this option is set to 3, and you have 18 Chapters enabled, then the total number of unique
+    # Characters that Chapter unlock requirements will pick from will be 3 * 18 = 54 Characters.
+    # 
+    # Lower values will result in characters more often being used in unlock requirements for many Chapters.
+    # 
+    # Higher values will result in characters more often being used in unlock requirements for only 1 or 2 Chapters.
+    # 
+    # The characters are picked at random, so it is possible that some unique characters won't get picked for a single
+    # Chapter.
+    # 
+    # Comparing against setting chapters to require Vanilla Characters to unlock:
+    # 
+    # - With all 36 Chapters enabled and set to require vanilla Story Characters to unlock, there would be 56 unique
+    #   Characters total, averaging 1.555 unique Characters per Chapter, with Chapters averaging 3.361 unique Characters
+    #   in their unlock requirements.
+    # - With all 36 Chapters enabled and set to require vanilla Purchase Characters, where possible, or Story Characters
+    #   otherwise, there would be 102 unique Characters total, averaging 2.833 unique Characters per Chapter, with
+    #   Chapters averaging 2.944 unique Characters in their unlock requirements.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 6
+    2: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-1-6: 0 # random value between 1 and 6
+
+  #########
+  # Items #
+  #########
+  minikit_bundle_size:
+    # Minikit items in the item pool are bundled into items individually worth this number of Minikits.
+    # 
+    # Low bundle sizes can cause generation times to increase and are more likely to result in generation failing with a
+    # FillError when generating Lego Star Wars: The Complete Saga on its own, or with other games that can struggle to
+    # place all items.
+    # 
+    # Low bundle sizes also mean fewer filler items in the item pool.
+    individual: 0
+    '2': 0
+    '5': 50
+    '10': 0
+
+  start_with_detectors:
+    # Start with the Minikit Detector and Power Brick Detector unlocked.
+    # 
+    # When these Extras are enabled, the locations of Minikits and Power Bricks in the current level are shown with
+    # arrows.
+    'false': 0
+    'true': 50
+
+  preferred_characters:
+    # Specify characters that the generator should try to always include in the item pool.
+    # 
+    # When the number of enabled Chapters is reduced from the maximum, the number of items to add to the item pool is also
+    # reduced, so not all characters may get added to the item pool.
+    # 
+    # The names of all items can be found by starting the Lego Star Wars: The Complete Saga client and entering the
+    # ``/items`` command.
+    # 
+    # If no vehicle Chapters are enabled, no vehicle characters will be included in the item pool.
+    ['Yoda (Ghost)', 'General Grievous', 'Droideka']
+
+  preferred_extras:
+    # Specify Extras that the generator should try to always include in the item pool.
+    # 
+    # When the number of enabled Chapters is reduced from the maximum, the number of items to add to the item pool is also
+    # reduced, so not all Extras may get added to the item pool.
+    # 
+    # The names of all items can be found by starting the Lego Star Wars: The Complete Saga client and entering the
+    # ``/items`` command.
+    # 
+    # Score Multipliers that are logically required, due to the Most Expensive Purchase With No Score Multiplier option,
+    # will always be included in the item pool.
+    # 
+    # When Progressive Score Multiplier items are enabled (always enabled currently), preferring "Score x{number}" to be
+    # included in the item pool will try to ensure there are enough Progressive Score Multiplier items to unlock that
+    # score multiplier.
+    ['Deflect Bolts', 'Disarm Troopers', 'Score x6', 'Stud Magnet', 'Fast Force', 'Score x10', 'Invincibility', 'Dark Side', 'Score x8', 'Fast Build', 'Score x4', 'Score x2', 'Exploding Blaster Bolts', 'Force Grapple Leap', 'Extra Toggle', 'Infinite Torpedos', 'Self Destruct', 'Super Ewok Catapult']
+
+  filler_reserve_characters:
+    # When enabled, reserve space in the item pool for at least as many Characters as enabled locations that would
+    # normally unlock Characters in vanilla.
+    # 
+    # When disabled, the only reserved space in the item pool for Characters will be the Characters needed to reach all
+    # locations. Additional Characters will only get added to the item pool through the Filler Weight: Characters option.
+    'false': 0
+    'true': 50
+
+  filler_reserve_extras:
+    # When enabled, reserve space in the item pool for at least as many Extras as enabled locations that would normally
+    # unlock Extras in vanilla.
+    # 
+    # When disabled, the only reserved space in the item pool for Extras will be the Extras needed to reach all locations.
+    # Additional Extras will only get added to the item pool through the Filler Weight: Extras option.
+    'false': 0
+    'true': 50
+
+  filler_weight_characters:
+    # This option controls the weight of characters when choosing which items to fill out the rest of the space in the
+    # item pool. A higher weight in comparison to the other Filler Weight options results in more characters in the item
+    # pool, compared to other items used to fill out the rest of the item pool.
+    # 
+    # The generator tries to fill the item pool with as many Characters and Extras as would be unlocked, in vanilla, by
+    # all the enabled locations.
+    # 
+    # Archipelago locations that don't have a corresponding vanilla item, and Minikits being bundled, results in some free
+    # space in the item pool for any kind of item.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    10: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  filler_weight_extras:
+    # This option controls the weight of Extras when choosing which items to fill out the rest of the space in the
+    # item pool. A higher weight in comparison to the other Filler Weight options results in more Extras in the item
+    # pool, compared to other items used to fill out the rest of the item pool.
+    # 
+    # The generator tries to fill the item pool with as many Characters and Extras as would be unlocked, in vanilla, by
+    # all the enabled locations.
+    # 
+    # Archipelago locations that don't have a corresponding vanilla item, and Minikits being bundled, results in some free
+    # space in the item pool for any kind of item.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    30: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  filler_weight_junk:
+    # This option controls the weight of Studs, Power Ups and other junk filler Archipelago items when choosing which
+    # items to fill out the rest of the space in the item pool. A higher weight in comparison to the other Filler Weight
+    # options results in more Studs and other filler Archipelago items in the item pool, compared to other items used to
+    # fill out the rest of the item pool.
+    # 
+    # The weight of each Junk Filler item can be controlled with the separate Junk Weights option.
+    # 
+    # The generator tries to fill the item pool with as many Characters and Extras as would be unlocked, in vanilla, by
+    # all the enabled locations.
+    # 
+    # Archipelago locations that don't have a corresponding vanilla item, and Minikits being bundled, results in some free
+    # space in the item pool for any kind of item.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    30: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  junk_weights:
+    # Control the weight of each Junk Filler item.
+    # 
+    # If all weight are set to zero, all Junk will be Blue Studs.
+    # 
+    # Purple Studs give 10000 Studs when received.
+    # Blue Studs give 1000 Studs when received.
+    # Gold Studs give 100 Studs when received.
+    # Silver Studs give 10 Studs when received.
+    # Received studs are multiplied by unlocked Score Multipliers and any active Power Up.
+    # 
+    # Power Up items give 20 seconds of invincibility, 2x score multiplier and a number of other beneficial effects.
+    # Power Up items will not be used while in the Cantina, LEGO City, New Town or Battle Over Coruscant (3-1).
+    # Unused Power Up items do not carry over to the next play session.
+    Blue Stud: 50
+    Gold Stud: 5
+    Power Up: 15
+    Purple Stud: 15
+    Silver Stud: 1
+
+  ##########
+  # Client #
+  ##########
+  received_item_messages:
+    # Determines whether an in-game notification is displayed when receiving an item.
+    # 
+    # Note: Dying while a message is displayed results in losing studs as normal, but the lost studs do not drop, so
+    # cannot be recovered.
+    # Note: Collecting studs while a message is displayed plays the audio for collecting Blue/Purple studs, but this has
+    # no effect on the received value of the studs collected.
+    # 
+    # **All:** Every item shows a message.
+    # 
+    # **None:** All items are received silently.
+    none: 0
+    all: 50
+    progression: 0
+
+  checked_location_messages:
+    # Determines whether an in-game notification is displayed when checking a location.
+    # 
+    # Note: Dying while a message is displayed results in losing studs as normal, but the lost studs do not drop, so
+    # cannot be recovered.
+    # Note: Collecting studs while a message is displayed plays the audio for collecting Blue/Purple studs, but this has
+    # no effect on the received value of the studs collected.
+    # 
+    # **All:** Every checked location shows a message
+    # 
+    # **None:** No checked locations show a message
+    none: 0
+    all: 50
+
+  uncap_original_trilogy_high_jump:
+    # Original Trilogy Chapters, Bonuses and the Cantina cap High Jump height to about the same as a Jedi double jump
+    # because they were not designed for being able to High Jump.
+    # 
+    # Enabling this option will remove the cap, restoring High Jump height to the same as seen in Prequel Trilogy
+    # Chapters.
+    # 
+    # The logic does not currently account for this option being enabled.
+    'false': 50
+    'true': 0
+
+  auto_collect_spawned_pickups:
+    # Automatically collect pickups (studs and hearts) spawned by destroying objects/enemies, using the force on
+    # objects, or spawned by other means, such as from dying or from the Character Studs Extra.
+    # 
+    # Minikits, and other pickups that internally start off hidden, and get unhidden, rather than spawned in, are not
+    # affected.
+    # 
+    # When enabled, Power Up pickups no longer spawn from destroyed/forced objects, an active Power Up will not double the
+    # value of spawned studs (though score multiplier Extras still work).
+    # 
+    # Levels that already automatically collect spawned pickups, in the vanilla game, such as *Mos Espa Pod Race* and
+    # *LEGO City*, are unaffected by this option.
+    # 
+    # **Disabled:** Spawned pickups must be collected as normal.
+    # 
+    # **Enabled:** Spawned pickups will be automatically collected as soon as they spawn.
+    # 
+    # **Vehicle Levels Only:** Spawned pickups will be automatically collected in vehicle levels, and must be collected as
+    # normal in other levels.
+    disabled: 50
+    enabled: 0
+    vehicle_levels_only: 0
+
+  shop_fake_trap_chance:
+    # The chance that a Trap classification item in the shop instead shows as a fake Progression item.
+    # 
+    # Items that are a mix of the Trap classification and another classification are unaffected.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    50: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  progression_useful_item_color:
+    # Choose the color used to display the names of items that have both the Progression classification and the Useful
+    # classification.
+    # These are typically the most powerful progression items for a game.
+    # 
+    # 
+    # ``/color_test`` in the game's client will demonstrate each of the colors in-game.
+    white_ffffff: 0
+    white_green_outline_ffffff: 0
+    white_red_outline_ffffff: 0
+    bright_red_ff0000: 0
+    red_de0000: 0
+    dark_red_7e0000: 0
+    darker_red_640000: 0
+    red_pink_ff007e: 0
+    magenta_ff00ff: 0
+    purple_6e00de: 0
+    light_blue_purple_7e7eff: 0
+    deep_blue_0000ff: 0
+    blue_007eff: 0
+    dark_blue_00007e: 0
+    cyan_00ffff: 0
+    dark_cyan_007e7e: 0
+    dark_sea_green_007e76: 0
+    mint_green_7effc0: 0
+    dark_green_007e00: 0
+    bright_green_00ff00: 0
+    pea_green_80ff00: 0
+    near_white_yellow_feffea: 0
+    pale_yellow_ffff7e: 0
+    yellow_ffff00: 50
+    dark_yellow_7e7e00: 0
+    orange_ffc000: 0
+    dark_orange_ff7e00: 0
+
+  progression_item_color:
+    # Choose the color used to display Progression classification item names.
+    # 
+    # ``/color_test`` in the game's client will demonstrate each of the colors in-game.
+    white_ffffff: 0
+    white_green_outline_ffffff: 0
+    white_red_outline_ffffff: 0
+    bright_red_ff0000: 0
+    red_de0000: 0
+    dark_red_7e0000: 0
+    darker_red_640000: 0
+    red_pink_ff007e: 0
+    magenta_ff00ff: 0
+    purple_6e00de: 50
+    light_blue_purple_7e7eff: 0
+    deep_blue_0000ff: 0
+    blue_007eff: 0
+    dark_blue_00007e: 0
+    cyan_00ffff: 0
+    dark_cyan_007e7e: 0
+    dark_sea_green_007e76: 0
+    mint_green_7effc0: 0
+    dark_green_007e00: 0
+    bright_green_00ff00: 0
+    pea_green_80ff00: 0
+    near_white_yellow_feffea: 0
+    pale_yellow_ffff7e: 0
+    yellow_ffff00: 0
+    dark_yellow_7e7e00: 0
+    orange_ffc000: 0
+    dark_orange_ff7e00: 0
+
+  useful_item_color:
+    # Choose the color used to display Useful classification item names.
+    # 
+    # ``/color_test`` in the game's client will demonstrate each of the colors in-game.
+    white_ffffff: 0
+    white_green_outline_ffffff: 0
+    white_red_outline_ffffff: 0
+    bright_red_ff0000: 0
+    red_de0000: 0
+    dark_red_7e0000: 0
+    darker_red_640000: 0
+    red_pink_ff007e: 0
+    magenta_ff00ff: 0
+    purple_6e00de: 0
+    light_blue_purple_7e7eff: 0
+    deep_blue_0000ff: 0
+    blue_007eff: 50
+    dark_blue_00007e: 0
+    cyan_00ffff: 0
+    dark_cyan_007e7e: 0
+    dark_sea_green_007e76: 0
+    mint_green_7effc0: 0
+    dark_green_007e00: 0
+    bright_green_00ff00: 0
+    pea_green_80ff00: 0
+    near_white_yellow_feffea: 0
+    pale_yellow_ffff7e: 0
+    yellow_ffff00: 0
+    dark_yellow_7e7e00: 0
+    orange_ffc000: 0
+    dark_orange_ff7e00: 0
+
+  filler_item_color:
+    # Choose the color used to display Filler classification item names.
+    # 
+    # ``/color_test`` in the game's client will demonstrate each of the colors in-game.
+    white_ffffff: 0
+    white_green_outline_ffffff: 0
+    white_red_outline_ffffff: 0
+    bright_red_ff0000: 0
+    red_de0000: 0
+    dark_red_7e0000: 0
+    darker_red_640000: 0
+    red_pink_ff007e: 0
+    magenta_ff00ff: 0
+    purple_6e00de: 0
+    light_blue_purple_7e7eff: 0
+    deep_blue_0000ff: 0
+    blue_007eff: 0
+    dark_blue_00007e: 0
+    cyan_00ffff: 50
+    dark_cyan_007e7e: 0
+    dark_sea_green_007e76: 0
+    mint_green_7effc0: 0
+    dark_green_007e00: 0
+    bright_green_00ff00: 0
+    pea_green_80ff00: 0
+    near_white_yellow_feffea: 0
+    pale_yellow_ffff7e: 0
+    yellow_ffff00: 0
+    dark_yellow_7e7e00: 0
+    orange_ffc000: 0
+    dark_orange_ff7e00: 0
+
+  trap_item_color:
+    # Choose the color used to display Trap classification item names.
+    # 
+    # ``/color_test`` in the game's client will demonstrate each of the colors in-game.
+    white_ffffff: 0
+    white_green_outline_ffffff: 0
+    white_red_outline_ffffff: 0
+    bright_red_ff0000: 0
+    red_de0000: 50
+    dark_red_7e0000: 0
+    darker_red_640000: 0
+    red_pink_ff007e: 0
+    magenta_ff00ff: 0
+    purple_6e00de: 0
+    light_blue_purple_7e7eff: 0
+    deep_blue_0000ff: 0
+    blue_007eff: 0
+    dark_blue_00007e: 0
+    cyan_00ffff: 0
+    dark_cyan_007e7e: 0
+    dark_sea_green_007e76: 0
+    mint_green_7effc0: 0
+    dark_green_007e00: 0
+    bright_green_00ff00: 0
+    pea_green_80ff00: 0
+    near_white_yellow_feffea: 0
+    pale_yellow_ffff7e: 0
+    yellow_ffff00: 0
+    dark_yellow_7e7e00: 0
+    orange_ffc000: 0
+    dark_orange_ff7e00: 0
+
+  player_name_color:
+    # Choose the color used to display player names in Received Item and Checked Location messages.
+    # 
+    # ``/color_test`` in the game's client will demonstrate each of the colors in-game.
+    white_ffffff: 0
+    white_green_outline_ffffff: 0
+    white_red_outline_ffffff: 0
+    bright_red_ff0000: 0
+    red_de0000: 0
+    dark_red_7e0000: 0
+    darker_red_640000: 0
+    red_pink_ff007e: 0
+    magenta_ff00ff: 0
+    purple_6e00de: 0
+    light_blue_purple_7e7eff: 0
+    deep_blue_0000ff: 0
+    blue_007eff: 0
+    dark_blue_00007e: 0
+    cyan_00ffff: 0
+    dark_cyan_007e7e: 0
+    dark_sea_green_007e76: 0
+    mint_green_7effc0: 50
+    dark_green_007e00: 0
+    bright_green_00ff00: 0
+    pea_green_80ff00: 0
+    near_white_yellow_feffea: 0
+    pale_yellow_ffff7e: 0
+    yellow_ffff00: 0
+    dark_yellow_7e7e00: 0
+    orange_ffc000: 0
+    dark_orange_ff7e00: 0
+
+  location_name_color:
+    # Choose the color used to display location names in Received Item and Checked Location messages.
+    # 
+    # ``/color_test`` in the game's client will demonstrate each of the colors in-game.
+    white_ffffff: 50
+    white_green_outline_ffffff: 0
+    white_red_outline_ffffff: 0
+    bright_red_ff0000: 0
+    red_de0000: 0
+    dark_red_7e0000: 0
+    darker_red_640000: 0
+    red_pink_ff007e: 0
+    magenta_ff00ff: 0
+    purple_6e00de: 0
+    light_blue_purple_7e7eff: 0
+    deep_blue_0000ff: 0
+    blue_007eff: 0
+    dark_blue_00007e: 0
+    cyan_00ffff: 0
+    dark_cyan_007e7e: 0
+    dark_sea_green_007e76: 0
+    mint_green_7effc0: 0
+    dark_green_007e00: 0
+    bright_green_00ff00: 0
+    pea_green_80ff00: 0
+    near_white_yellow_feffea: 0
+    pale_yellow_ffff7e: 0
+    yellow_ffff00: 0
+    dark_yellow_7e7e00: 0
+    orange_ffc000: 0
+    dark_orange_ff7e00: 0
+
+  ##############
+  # Death Link #
+  ##############
+  death_link:
+    # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
+    # 
+    # Death Link can be toggled on/off in the client with ``/toggle_death_link``.
+    # 
+    # Known issues:
+    # - Studs are not dropped when receiving a death, however, you can use the Death Link Studs Loss option to cause a
+    # loss of studs when receiving a death.
+    'false': 50
+    'true': 0
+
+  death_link_amnesty:
+    # The number of deaths allowed before the next death is sent through Death Link.
+    # 
+    # 0 means that every death will be sent through Death Link,
+    # 1 means every other death will send through Death Link, etc.
+    # 
+    # Applies to most Chapters and other levels (every level not covered by Vehicle Death Link Amnesty).
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 10
+    0: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-10: 0 # random value between 0 and 10
+
+  vehicle_death_link_amnesty:
+    # The number of deaths allowed before the next death is sent through Death Link.
+    # 
+    # \*Applies to top-down vehicle levels and bonus vehicle levels that are easier to die in.
+    # 
+    # Applies to:
+    # 
+    # - 2-1 (Bounty Hunter Pursuit)
+    # - 2-5 (Gunship Cavalry)
+    # - 4-6 (Rebel Attack)
+    # - 5-1 (Hoth Battle)
+    # - 5-3 (Falcon Flight)
+    # - 6-6 (Into The Death Star)
+    # - Mos Espa Pod Race (Original)
+    # - Anakin's Flight
+    # - Gunship Cavalry (Original)
+    # 
+    # Does not apply to:
+    # 
+    # - 1-4 (Mos Espa Pod Race)
+    # - 3-1 (Battle Over Coruscant)
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 10
+    3: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-10: 0 # random value between 0 and 10
+
+  death_link_studs_loss:
+    # Choose how many studs are lost when receiving a death from Death Link.
+    # 
+    # The studs will not spawn around you, and will be permanently lost.
+    # 
+    # This is a temporary option while it is not possible for the client to perform a normal death that spawns studs.
+    '0': 0
+    '1000': 0
+    '2000': 50
+    '3000': 0
+    '4000': 0
+    '5000': 0
+    '6000': 0
+    '7000': 0
+    '8000': 0
+    '9000': 0
+    '10000': 0
+
+  death_link_studs_loss_scaling:
+    # When enabled, the stud loss from receiving a death from Death Link is multiplied by your maximum combined score
+    # multiplier.
+    'false': 50
+    'true': 0
+
+  ###########################
+  # Item & Location Options #
+  ###########################
+  local_items:
+    # Forces these items to be in their native world.
+    []
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with the specified amount of these items. Example: "Bomb: 1"
+    {}
+
+  start_inventory_from_pool:
+    # Start with the specified amount of these items and don't place them in the world. Example: "Bomb: 1"
+    # 
+    # The game decides what the replacement items will be.
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    []
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []
+
+  plando_items:
+    # Generic items plando.
+    []
