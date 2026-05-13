@@ -1,0 +1,438 @@
+﻿# Q. What is this file?
+# A. This file contains options which allow you to configure your multiworld experience while allowing
+#    others to play how they want as well.
+#
+# Q. How do I use it?
+# A. The options in this file are weighted. This means the higher number you assign to a value, the
+#    more chances you have for that option to be chosen. For example, an option like this:
+#
+#    map_shuffle:
+#      on: 5
+#      off: 15
+#
+#    Means you have 5 chances for map shuffle to occur, and 15 chances for map shuffle to be turned
+#    off.
+#
+# Q. I've never seen a file like this before. What characters am I allowed to use?
+# A. This is a .yaml file. You are allowed to use most characters.
+#    To test if your yaml is valid or not, you can use this website:
+#        http://www.yamllint.com/
+#    You can also verify that your Archipelago options are valid at this site:
+#        https://archipelago.gg/check
+
+# Your name in-game, limited to 16 characters.
+#     {player} will be replaced with the player's slot number.
+#     {PLAYER} will be replaced with the player's slot number, if that slot number is greater than 1.
+#     {number} will be replaced with the counter value of the name.
+#     {NUMBER} will be replaced with the counter value of the name, if the counter value is greater than 1.
+name: Player{number}
+
+# Used to describe your yaml. Useful if you have multiple files.
+description: Default Sonic Heroes Template
+
+game: Sonic Heroes
+requires:
+  version: 0.6.7 # Version of Archipelago required for this yaml to work as expected.
+  game:
+    Sonic Heroes: 2.2.0 # Version of the world required for this yaml to work as expected.
+
+Sonic Heroes:
+  ################
+  # Game Options #
+  ################
+  progression_balancing:
+    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
+    # 
+    # A lower setting means more getting stuck. A higher setting means less getting stuck.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-99: 0 # random value between 0 and 99
+    disabled: 0 # equivalent to 0
+    normal: 50 # equivalent to 50
+    extreme: 0 # equivalent to 99
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Full:** ensure everything can be reached and acquired.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    full: 50
+    minimal: 0
+
+  ########
+  # Meta #
+  ########
+  included_levels_and_sanities:
+    # Which Levels and Sanities should be included?
+    # Note that some of these (like Sonic Act 2 and Super Hard Mode are mutually exclusive)
+    # 
+    # Valid Choices:
+    # [
+    #     'Sonic Act A',
+    #     'Sonic Act B',
+    #     'Sonic KeySanity 1 Set',
+    #     'Sonic KeySanity Both Acts',
+    #     'Sonic CheckpointSanity 1 Set',
+    #     'Sonic CheckpointSanity Both Acts',
+    #     
+    #     'Dark Act A',
+    #     'Dark Act B',
+    #     'Dark ObjSanity',
+    #     'Dark KeySanity 1 Set',
+    #     'Dark KeySanity Both Acts',
+    #     'Dark CheckpointSanity 1 Set',
+    #     'Dark CheckpointSanity Both Acts',
+    #     
+    #     'Rose Act A',
+    #     'Rose Act B',
+    #     'Rose ObjSanity',
+    #     'Rose KeySanity 1 Set',
+    #     'Rose KeySanity Both Acts',
+    #     'Rose CheckpointSanity 1 Set',
+    #     'Rose CheckpointSanity Both Acts',
+    #     
+    #     'Chaotix Act A',
+    #     'Chaotix Act B',
+    #     'Chaotix ObjSanity',
+    #     'Chaotix KeySanity 1 Set',
+    #     'Chaotix KeySanity Both Acts',
+    #     'Chaotix CheckpointSanity 1 Set',
+    #     'Chaotix CheckpointSanity Both Acts',
+    #     
+    #     'Super Hard Mode',
+    #     'Super Hard CheckpointSanity',
+    # ]
+    ['Sonic CheckpointSanity 1 Set', 'Sonic Act A', 'Sonic KeySanity 1 Set']
+
+  unlock_type:
+    # How should the entire run be structured?
+    # Ability Character Unlocks has all levels open from the start and locks characters and abilities behind items.
+    # Legacy Gates has all abilities and characters unlocked from the start and instead locks level access behind level gates (like SA2).
+    ability_character_unlocks: 50
+    legacy_level_gates: 0
+
+  ability_unlocks:
+    # How should Ability Unlocks be Handled (if enabled)?
+    # Entire Story will make there be a "Homing Attack" item for each Team that unlocks Homing Attack on all levels for that team.
+    # All Regions Separate will have 7 sets of ability items (Per Team) that unlock the ability for that respective region. (A Region is a set of levels that follow the same theme)
+    # For example, Seaside Hill and Ocean Palace are both in the Ocean Region
+    # 
+    # Dev Note: All Regions Separate can cause significant BK in syncs (depending on speed of other games)
+    # Recommended for asyncs only (or with proper consideration)
+    all_regions_separate: 0
+    entire_story: 50
+
+  legacy_number_of_level_gates:
+    # How many Level Gates should there be?
+    # This option is ignored if set to Ability and Character Unlocks.
+    # 
+    # This will result in this many groups of levels locked behind emblems and boss completions and 1 additional group unlocked from the start.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 7
+    3: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-7: 0 # random value between 0 and 7
+
+  legacy_level_gates_allowed_bosses:
+    # Which Bosses should be allowed to be level gate bosses?
+    # This option is ignored if set to Ability and Character Unlocks.
+    # This needs to be equal to the number of level gates or larger.
+    # 
+    # Valid Choices:
+    # 
+    #     - 'Egg Hawk'
+    #     - 'Team Fight 1'
+    #     - 'Robot Carnival'
+    #     - 'Egg Albatross'
+    #     - 'Team Fight 2'
+    #     - 'Robot Storm'
+    #     - 'Egg Emperor'
+    ['Robot Carnival', 'Egg Emperor', 'Robot Storm', 'Team Fight 2', 'Team Fight 1', 'Egg Albatross', 'Egg Hawk']
+
+  required_rank:
+    # What Minimum Rank should be required to send level complete checks?
+    # This option is ignored when Ability and Character Unlocks is enabled.
+    # This also affects Bonus/Emerald stage unlocking as well.
+    rank_e: 50
+    rank_d: 0
+    rank_c: 0
+    rank_b: 0
+    rank_a: 0
+
+  ########
+  # Goal #
+  ########
+  final_boss:
+    # What should the final boss be?
+    # Metal Madness requires both Metal Madness and Metal Overlord (in one go).
+    # This is accessed from Metal Overlord in level select regardless of choice.
+    # Sea Gate is the scariest final boss of all time.
+    metal_madness: 0
+    metal_overlord: 50
+    sea_gate: 0
+
+  goal_unlock_conditions:
+    # How should Metal Madness/Overlord be unlocked?
+    # Adding Multiple will require all of them.
+    # 
+    # Valid Choices:
+    #     - 'Emblems'
+    #     - 'Emeralds'
+    #     - 'Level Completions All Teams'
+    #     - 'Level Completions Per Story'
+    # 
+    # 
+    # Note: All Characters are required to be unlocked if Unlock Type is Ability Character Unlocks as well.
+    # Note: There are no Emblems added to the item pool if Unlock Type is Ability Character Unlocks
+    ['Emeralds', 'Level Completions Per Story', 'Level Completions All Teams']
+
+  goal_level_completions:
+    # How Many Level Completions are needed across all Stories to unlock Metal Madness/Overlord?
+    # Completing Both Acts of a level will not count as a second Completion.
+    # This Requires Level Completion Goal Unlock Condition.
+    # This is capped to 14 * the number of stories enabled.
+    # This is in addition to Goal Unlock Conditions Per Story.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 70
+    0: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-70: 0 # random value between 0 and 70
+
+  goal_level_completions_per_story:
+    # How Many Level Completions are needed per Story to unlock Metal Madness/Overlord?
+    # This Requires Level Completion Per Story Goal Unlock Condition.
+    # Each Story will require at least this many completed levels.
+    # This is in addition to Goal Level Completions.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 14
+    7: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-14: 0 # random value between 0 and 14
+
+  ##############
+  # Team Sonic #
+  ##############
+  sonic_story_starting_character:
+    # If Ability and Character Unlocks are enabled, which Character should be unlocked for Sonic Story from the Start?
+    # Knuckles has the largest sphere 1
+    # Sonic and Tails are even though Tails is slightly more restrictive logically
+    sonic: 0
+    tails: 0
+    knuckles: 0
+    random: 50
+
+  #############
+  # Team Dark #
+  #############
+  dark_sanity:
+    # How many enemies are needed for a sanity check?
+    # Requires Mission B and Dark ObjSanity to be enabled
+    # 1 results in 1400 checks
+    # 20 results in 70 checks
+    '1': 0
+    '5': 0
+    '10': 0
+    '20': 50
+
+  dark_story_starting_character:
+    # If Ability and Character Unlocks are enabled, which Character should be unlocked for Dark Story from the Start?
+    shadow: 0
+    rouge: 0
+    omega: 0
+    random: 50
+
+  #############
+  # Team Rose #
+  #############
+  rose_sanity:
+    # How many rings are needed for a sanity check?
+    # Requires Mission B and Rose ObjSanity to be enabled
+    # 1 results in 2800 checks
+    # 20 results in 140 checks
+    '1': 0
+    '5': 0
+    '10': 0
+    '20': 50
+
+  rose_story_starting_character:
+    # If Ability and Character Unlocks are enabled, which Character should be unlocked for Rose Story from the Start?
+    amy: 0
+    cream: 0
+    big: 0
+    random: 50
+
+  ################
+  # Team Chaotix #
+  ################
+  chaotix_sanity:
+    # Should Chaotix Sanity be enabled, and if so, how many rings are needed for a check on Casino Park? (All non-Casino Park levels are the same if enabled)
+    # Mission A only Check Count: 223 + 200 / value (if enabled)
+    # Mission B only Check Count: 266 + 500 / value (if enabled)
+    # Both Missions Check Count: 489 + 700 / value (if enabled)
+    '1': 0
+    '5': 0
+    '10': 0
+    '20': 50
+
+  chaotix_story_starting_character:
+    # If Ability and Character Unlocks are enabled, which Character should be unlocked for Chaotix Story from the Start?
+    espio: 0
+    charmy: 0
+    vector: 0
+    random: 50
+
+  ########################
+  # Team Super Hard Mode #
+  ########################
+  super_hard_mode_starting_character:
+    # If Ability and Character Unlocks are enabled, which Character should be unlocked for Super Hard Mode from the Start?
+    super_hard_sonic: 0
+    super_hard_tails: 0
+    super_hard_knuckles: 0
+    random: 50
+
+  #######
+  # QOL #
+  #######
+  remove_casino_park_vip_table_laser_gate:
+    # This Option will Remove the Laser Gate in front of the ramp before the VIP Table in Casino Park.
+    # This allows access to the Bonus Key there and the VIP table without having to get the switch on the pinball table before.
+    'false': 0
+    'true': 50
+
+  #########
+  # Traps #
+  #########
+  trap_fill:
+    # What percent of filler items should be replaced with trap items?
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    0: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  stealth_trap_weight:
+    # Determines the weight (not percent) for Stealth Trap.
+    # Traps must be enabled for this to have any effect.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    50: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  freeze_trap_weight:
+    # Determines the weight (not percent) for Freeze Trap.
+    # Traps must be enabled for this to have any effect.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    50: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  no_swap_trap_weight:
+    # Determines the weight (not percent) for No Swap Trap.
+    # Traps must be enabled for this to have any effect.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    50: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  ring_trap_weight:
+    # Determines the weight (not percent) for Ring Trap.
+    # Traps must be enabled for this to have any effect.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    50: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  charmy_trap_weight:
+    # Determines the weight (not percent) for Charmy Trap.
+    # Traps must be enabled for this to have any effect.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    50: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  ###########################
+  # Item & Location Options #
+  ###########################
+  local_items:
+    # Forces these items to be in their native world.
+    []
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with the specified amount of these items. Example: "Bomb: 1"
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    []
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []
+
+  plando_items:
+    # Generic items plando.
+    []

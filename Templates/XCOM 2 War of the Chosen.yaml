@@ -1,0 +1,409 @@
+﻿# Q. What is this file?
+# A. This file contains options which allow you to configure your multiworld experience while allowing
+#    others to play how they want as well.
+#
+# Q. How do I use it?
+# A. The options in this file are weighted. This means the higher number you assign to a value, the
+#    more chances you have for that option to be chosen. For example, an option like this:
+#
+#    map_shuffle:
+#      on: 5
+#      off: 15
+#
+#    Means you have 5 chances for map shuffle to occur, and 15 chances for map shuffle to be turned
+#    off.
+#
+# Q. I've never seen a file like this before. What characters am I allowed to use?
+# A. This is a .yaml file. You are allowed to use most characters.
+#    To test if your yaml is valid or not, you can use this website:
+#        http://www.yamllint.com/
+#    You can also verify that your Archipelago options are valid at this site:
+#        https://archipelago.gg/check
+
+# Your name in-game, limited to 16 characters.
+#     {player} will be replaced with the player's slot number.
+#     {PLAYER} will be replaced with the player's slot number, if that slot number is greater than 1.
+#     {number} will be replaced with the counter value of the name.
+#     {NUMBER} will be replaced with the counter value of the name, if the counter value is greater than 1.
+name: Player{number}
+
+# Used to describe your yaml. Useful if you have multiple files.
+description: Default XCOM 2 War of the Chosen Template
+
+game: XCOM 2 War of the Chosen
+requires:
+  version: 0.6.7 # Version of Archipelago required for this yaml to work as expected.
+  game:
+    XCOM 2 War of the Chosen: 0.10.10 # Version of the world required for this yaml to work as expected.
+
+XCOM 2 War of the Chosen:
+  ################
+  # Game Options #
+  ################
+  progression_balancing:
+    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
+    # 
+    # A lower setting means more getting stuck. A higher setting means less getting stuck.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-99: 0 # random value between 0 and 99
+    disabled: 0 # equivalent to 0
+    normal: 50 # equivalent to 50
+    extreme: 0 # equivalent to 99
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Full:** ensure everything can be reached and acquired.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    full: 50
+    minimal: 0
+
+  ###############
+  # DLC Options #
+  ###############
+  alien_hunters_dlc:
+    # Set which locations and items from the Alien Hunters DLC are enabled.
+    # 
+    # all:                  All Alien Hunters DLC locations and items are enabled.
+    # no_integrated_dlc:    Experimental Weapons location is disabled; for playing without the Integrated DLC option.
+    # no_alien_rulers:      Alien Ruler locations are disabled; for avoiding tedious encounters.
+    # none:                 All Alien Hunters DLC locations and items are disabled; for playing without the Alien Hunters DLC.
+    all: 0
+    no_integrated_dlc: 0
+    no_alien_rulers: 0
+    none: 50
+
+  ################
+  # Goal Options #
+  ################
+  goal:
+    # Set the goal of the seed.
+    # 
+    # alien_fortress:         Beat the Alien Fortress Assault mission. (final mission)
+    # network_tower:          Beat the ADVENT Network Tower Assault mission. (second to last mission)
+    # chosen_stronghold_1:    Beat any Chosen Stronghold Assault mission.
+    # chosen_stronghold_2:    Beat any two Chosen Stronghold Assault missions.
+    # chosen_stronghold_3:    Beat all three Chosen Stronghold Assault missions.
+    alien_fortress: 50
+    network_tower: 0
+    chosen_stronghold_1: 0
+    chosen_stronghold_2: 0
+    chosen_stronghold_3: 0
+
+  campaign_completion_requirements:
+    # Require these objectives to be completed for the final mission to be unlocked.
+    # Set all if you wish to experience a more vanilla XCOM 2 story progression.
+    # 
+    # 'PsiGateObjective':         Require completion of the psi gate research.
+    # 'StasisSuitObjective':      Require completion of the stasis suit research.
+    # 'AvatarCorpseObjective':    Require acquisition of an avatar corpse.
+    []
+
+  ####################
+  # Location Options #
+  ####################
+  enemy_sanity:
+    # Enable locations for the first kill of each enemy type.
+    'false': 0
+    'true': 50
+
+  item_sanity:
+    # Enable locations for the first use of each item type.
+    'false': 50
+    'true': 0
+
+  chosen_hunt_sanity:
+    # Shuffle Chosen Hunt covert actions and their rewards, i.e. Resistance Faction influence and Chosen Stronghold missions.
+    'false': 50
+    'true': 0
+
+  ################
+  # Item Options #
+  ################
+  progressive_items:
+    # Force these items to be collected in order.
+    # Valid values: 'RifleTech', 'RifleTech+' (includes [Tech] Modular Weapons),
+    #               'ArmorTech', 'ArmorTech+' (includes [Tech] Hybrid Materials),
+    #               'MeleeWeaponTech', 'GREMLINTech', 'PsionicsTech'
+    ['RifleTech', 'MeleeWeaponTech', 'PsionicsTech', 'GREMLINTech', 'ArmorTech']
+
+  chosen_weapon_fragments:
+    # Split Chosen weapons into two or three fragments each. Collect all fragments to unlock the corresponding tech.
+    # This should decrease the likelihood of receiving Chosen weapons too early and trivializing the game.
+    # NOTE: This option requires enabling additional vacant locations, e.g. through Enemysanity or Itemsanity.
+    'off': 50
+    two: 0
+    three: 0
+
+  early_proving_ground:
+    # Force the Proving Ground to be unlockable very early (sphere 1).
+    # This ensures access to many powerful items but may significantly increase the amount of reachable locations.
+    'false': 50
+    'true': 0
+
+  ##################
+  # Filler Options #
+  ##################
+  resource_share:
+    # Set the share of filler items to be resources.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    65: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  weapon_mod_share:
+    # Set the share of filler items to be weapon upgrades.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    15: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  pcs_share:
+    # Set the share of filler items to be PCSs.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    10: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  staff_share:
+    # Set the share of filler items to be staff.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    10: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  trap_share:
+    # Set the share of filler items to be traps.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    0: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  nothing_share:
+    # Set the share of filler items to be nothing.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    0: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  #########################
+  # Randomization Options #
+  #########################
+  enemy_rando:
+    # Enable enemy shuffle, randomizing both scripted and procedural encounters.
+    'false': 50
+    'true': 0
+
+  enemy_plando:
+    # If enemy rando is enabled, constrain enemy placements.
+    # Define explicit shuffle groups with the 'forced' key.
+    # Exempt enemies from shuffling with the 'fixed' key.
+    # 
+    # Example: {
+    #     'forced': [
+    #         [['Sectoid', 'Muton'], ['Viper', 'Archon']],
+    #         [['Adv'], ['Adv']]
+    #     ],
+    #     'fixed': ['Gatekeeper', 'Sectopod']
+    # }
+    # Sectoids and Mutons will be replaced by Vipers and Archons randomly.
+    # All ADVENT enemies will be replaced by random ADVENT enemies.
+    # Gatekeepers and Sectopods will not be shuffled.
+    # All other enemies will be shuffled among each other.
+    fixed: []
+    forced: []
+
+  ##################
+  # Config Options #
+  ##################
+  hint_research_projects:
+    # Enable research project hints in the Avenger laboratory and shadow chamber.
+    # Can be changed in-game via Mod Config Menu.
+    # 
+    # off:       Reveal no item info and don't create server hints.
+    # partial:   Reveal item categories but don't create server hints.
+    # full:      Reveal all item info and create server hints.
+    'off': 50
+    partial: 0
+    full: 0
+
+  skip_mission_types:
+    # Automatically skip these mission types when they are spawned from a regular calendar event.
+    # Can be changed in-game via Mod Config Menu.
+    # Valid values: 'SupplyRaid', 'CouncilMission', 'ResistanceOp'
+    ['SupplyRaid', 'ResistanceOp', 'CouncilMission']
+
+  disable_covert_action_risks:
+    # Disable these covert action risks.
+    # Can be changed in-game via Mod Config Menu.
+    # Valid values: 'Ambush', 'Capture'
+    ['Ambush', 'Capture']
+
+  supply_raid_reward_base:
+    # Set the amount of resources that are rewarded for skipped supply raids.
+    # The base represents a percentage of set maximum values for supplies (200), alien alloys (80), elerium crystals (40) and elerium cores (3).
+    # The error determines the range of possible values, e.g. 35-65% for default settings.
+    # Can be changed in-game via Mod Config Menu.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    50: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  supply_raid_reward_error:
+    # Set the amount of resources that are rewarded for skipped supply raids.
+    # The base represents a percentage of set maximum values for supplies (200), alien alloys (80), elerium crystals (40) and elerium cores (3).
+    # The error determines the range of possible values, e.g. 35-65% for default settings.
+    # Can be changed in-game via Mod Config Menu.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    15: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  extra_xp_gain:
+    # Set the amount of extra XP that soldiers gain passively.
+    # Each time an enemy dies, each soldier has the given fraction of a kill attributed to them, speeding up promotions.
+    # Because this system is agnostic to who got the final hit, soldiers with low kill counts will benefit more from the increase.
+    # In general, the effect will be much stronger than it seems; the default setting for example will work out to a 35% increase in XP from kills,
+    # but something like a 140% increase in XP from assists, meaning the actual bonus lies somewhere in between.
+    # Can be changed in-game via Mod Config Menu.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 200
+    35: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-200: 0 # random value between 0 and 200
+
+  extra_corpse_gain:
+    # Set the amount of extra corpses that each enemy drops.
+    # Can be changed in-game via Mod Config Menu.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 5
+    1: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-5: 0 # random value between 0 and 5
+
+  instant_rookie_training:
+    # Make training rookies in the GTS instant.
+    # Can be changed in-game via Mod Config Menu.
+    'false': 50
+    'true': 0
+
+  disable_day_one_traps:
+    # Disable traps when they are received during the first day of a campaign.
+    # One use for this is if you wish to retire traps received during previous runs after a restart.
+    # Can be changed in-game via Mod Config Menu.
+    'false': 50
+    'true': 0
+
+  remove_corpse_costs:
+    # Remove corpse costs from all items.
+    'false': 50
+    'true': 0
+
+  ###############
+  # Mod Options #
+  ###############
+  active_mods:
+    # Activate these mods from the x2wotc/mods directory.
+    # This is only relevant when modding *the APWorld* (NOT the game), leave empty if you're unsure what that means.
+    # List all available mods with the /mods client command.
+    []
+
+  ###########################
+  # Item & Location Options #
+  ###########################
+  local_items:
+    # Forces these items to be in their native world.
+    []
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with the specified amount of these items. Example: "Bomb: 1"
+    {}
+
+  start_inventory_from_pool:
+    # Start with the specified amount of these items and don't place them in the world. Example: "Bomb: 1"
+    # 
+    # The game decides what the replacement items will be.
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    []
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []
+
+  plando_items:
+    # Generic items plando.
+    []

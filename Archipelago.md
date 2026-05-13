@@ -10,6 +10,7 @@ This document provides key links and resources for Archipelago multiworld random
 | General Guides | [https://archipelago.gg/tutorial/](https://archipelago.gg/tutorial/) |
 | Main Setup Guide | [https://archipelago.gg/tutorial/Archipelago/setup_en](https://archipelago.gg/tutorial/Archipelago/setup_en) |
 | Helpful Commands | [https://archipelago.gg/tutorial/Archipelago/commands_en](https://archipelago.gg/tutorial/Archipelago/commands_en) |
+| GitHub | [https://github.com/ArchipelagoMW/Archipelago](https://github.com/ArchipelagoMW/Archipelago) |
 | Supported Games | [https://archipelago.gg/games](https://archipelago.gg/games) |
 | Generate Randomizer | [https://archipelago.gg/generate](https://archipelago.gg/generate) |
 | Host Randomizer | [https://archipelago.gg/uploads](https://archipelago.gg/uploads) |
@@ -17,7 +18,8 @@ This document provides key links and resources for Archipelago multiworld random
 | User Session Identifier | [https://archipelago.gg/session](https://archipelago.gg/session) |
 | FAQ | [https://archipelago.gg/faq/en/](https://archipelago.gg/faq/en/) |
 | Glossary | [https://archipelago.gg/glossary/en/](https://archipelago.gg/glossary/en/) |
-| Discord | [https://discord.com/invite/8Z65BR2](https://discord.com/invite/8Z65BR2) |
+| Discord Normal | [https://discord.com/invite/8Z65BR2](https://discord.com/invite/8Z65BR2) |
+| Discord Unrated/18+ | [https://discord.com/invite/fqvNCCRsu4](https://discord.com/invite/fqvNCCRsu4) |
 | Universal Tracker | [https://github.com/FarisTheAncient/Archipelago/releases?q=Tracker](https://github.com/FarisTheAncient/Archipelago/releases?q=Tracker) |
 
 ## Miscellaneous Resources

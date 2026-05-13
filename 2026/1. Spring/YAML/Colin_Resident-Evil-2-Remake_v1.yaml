@@ -1,4 +1,4 @@
-name: Colin
+name: Colin-{player}
 game: Resident Evil 2 Remake
 requires:
     version: 0.6.4

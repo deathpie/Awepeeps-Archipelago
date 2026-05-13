@@ -1,0 +1,453 @@
+﻿# Q. What is this file?
+# A. This file contains options which allow you to configure your multiworld experience while allowing
+#    others to play how they want as well.
+#
+# Q. How do I use it?
+# A. The options in this file are weighted. This means the higher number you assign to a value, the
+#    more chances you have for that option to be chosen. For example, an option like this:
+#
+#    map_shuffle:
+#      on: 5
+#      off: 15
+#
+#    Means you have 5 chances for map shuffle to occur, and 15 chances for map shuffle to be turned
+#    off.
+#
+# Q. I've never seen a file like this before. What characters am I allowed to use?
+# A. This is a .yaml file. You are allowed to use most characters.
+#    To test if your yaml is valid or not, you can use this website:
+#        http://www.yamllint.com/
+#    You can also verify that your Archipelago options are valid at this site:
+#        https://archipelago.gg/check
+
+# Your name in-game, limited to 16 characters.
+#     {player} will be replaced with the player's slot number.
+#     {PLAYER} will be replaced with the player's slot number, if that slot number is greater than 1.
+#     {number} will be replaced with the counter value of the name.
+#     {NUMBER} will be replaced with the counter value of the name, if the counter value is greater than 1.
+name: Player{number}
+
+# Used to describe your yaml. Useful if you have multiple files.
+description: Long Preset for Satisfactory
+
+game: Satisfactory
+requires:
+  version: 0.6.7 # Version of Archipelago required for this yaml to work as expected.
+  game:
+    Satisfactory: 2.2.0 # Version of the world required for this yaml to work as expected.
+
+Satisfactory:
+  ################
+  # Game Options #
+  ################
+  death_link:
+    # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
+    'false': 50
+    'true': 0
+
+  progression_balancing:
+    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
+    # 
+    # A lower setting means more getting stuck. A higher setting means less getting stuck.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-99: 0 # random value between 0 and 99
+    disabled: 0 # equivalent to 0
+    normal: 50 # equivalent to 50
+    extreme: 0 # equivalent to 99
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Full:** ensure everything can be reached and acquired.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    full: 50
+    minimal: 0
+
+  milestone_cost_multiplier:
+    # Multiplies the amount of resources needed to unlock a Milestone by this factor.
+    # 
+    # The value is a percentage:
+    # 
+    # - **50** = half cost
+    # - **100** = normal milestone cost
+    # - **200** = double the cost
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 500
+    100: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-1-500: 0 # random value between 1 and 500
+
+  energy_link:
+    # Allow transferring energy to and from other worlds using the Power Storage building.
+    # No energy is lost in the transfer on Satisfactory's side, but other worlds may have other settings.
+    'false': 0
+    'true': 50
+
+  ##############
+  # Game Scope #
+  ##############
+  final_elevator_phase:
+    # Put the milestones accessible BEFORE this Space Elevator Phase in logic.
+    # Milestones after the selected Phase are empty and contain nothing.
+    # If your goal selection contains *Space Elevator Phase* then submitting this Phase's elevator package completes that goal.
+    # If the goal is not enabled, this setting simply limits the HUB's content.
+    # 
+    # Estimated in-game completion times:
+    # 
+    # - **Phase 1 (Tiers 1-2)**: ~3 Hours
+    # - **Phase 2 (Tiers 1-4)**: ~8 Hours
+    # - **Phase 3 (Tiers 1-6)**: ~50 Hours
+    # - **Phase 4 (Tiers 1-8)**: ~100 Hours
+    # - **Phase 5 (Tiers 1-9)**: ~150 Hours
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 5
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-1-5: 0 # random value between 1 and 5
+    phase 1 (tiers 1-2): 0 # equivalent to 1
+    phase 2 (tiers 1-4): 0 # equivalent to 2
+    phase 3 (tiers 1-6): 50 # equivalent to 3
+    phase 4 (tiers 1-8): 0 # equivalent to 4
+    phase 5 (tiers 1-9): 0 # equivalent to 5
+
+  hard_drive_progression_limit:
+    # How many Hard Drives can contain progression items.
+    # Hard Drives above this count cannot contain progression, but can still be Useful.
+    # 
+    # There are 118 total hard drives in the world and the current implementation supports up to 100 progression hard drives.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    60: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  ##################
+  # Goal Selection #
+  ##################
+  goal_selection:
+    # What will be your goal(s)?
+    # Configure them further with other options.
+    # 
+    # Possible values are:
+    # - **Space Elevator Phase**
+    # - **AWESOME Sink Points (total)**
+    # - **AWESOME Sink Points (per minute)**
+    # - **Exploration Collectables**
+    ['Space Elevator Phase', 'AWESOME Sink Points (per minute)']
+
+  goal_requirement:
+    # Of the goals selected in *Select your Goals*, how many must be reached to complete your slot?
+    require_any_one_goal: 0
+    require_all_goals: 50
+
+  goal_awesome_sink_points_total:
+    # Does nothing if *AWESOME Sink Points (total)* goal is not enabled.
+    # 
+    # Sink an amount of items totalling this amount of points to finish.
+    # This setting is a *point count*, not a *coupon* count!
+    # 
+    # In the base game, it takes 347 coupons to unlock every non-repeatable purchase, or 1895 coupons to purchase every non-producible item.
+    # 
+    # Use the **TFIT - Ficsit Information Tool** mod or the Satisfactory wiki to find out how many points items are worth.
+    # 
+    # If you have *Free Samples* enabled, consider setting this higher so that you can't reach the goal just by sinking your Free Samples.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 2166000
+    # Maximum value is 18436379500
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-2166000-18436379500: 0 # random value between 2166000 and 18436379500
+    50 coupons (~2m points): 50 # equivalent to 2166000
+    100 coupons (~18m points): 0 # equivalent to 17804500
+    150 coupons (~61m points): 0 # equivalent to 60787500
+    200 coupons (~145m points): 0 # equivalent to 145053500
+    250 coupons (~284m points): 0 # equivalent to 284442000
+    300 coupons (~493m points): 0 # equivalent to 492825000
+    350 coupons (~784m points): 0 # equivalent to 784191000
+    400 coupons (~1,2b points): 0 # equivalent to 1172329500
+    450 coupons (~1,7b points): 0 # equivalent to 1671112500
+    500 coupons (~2b points): 0 # equivalent to 2294578500
+    550 coupons (~3b points): 0 # equivalent to 3056467000
+    600 coupons (~4b points): 0 # equivalent to 3970650000
+    650 coupons (~5b points): 0 # equivalent to 5051216000
+    700 coupons (~6b points): 0 # equivalent to 6311854500
+    750 coupons (~8b points): 0 # equivalent to 7766437500
+    800 coupons (~9b points): 0 # equivalent to 9429103500
+    850 coupons (~11b points): 0 # equivalent to 11313492000
+    900 coupons (~13b points): 0 # equivalent to 13433475000
+    950 coupons (~16b points): 0 # equivalent to 15803241000
+    1000 coupons (~18b points): 0 # equivalent to 18436379500
+
+  goal_awesome_sink_points_per_minute:
+    # Does nothing if *AWESOME Sink Points (per minute)* goal is not enabled.
+    # 
+    # Sink items to maintain a sink points per minute of the chosen amount for 10 minutes to finish.
+    # This setting is in *points per minute* on the orange track, so DNA Capsules don't count.
+    # This option's presets are example production thresholds - you don't have to sink exactly those specific items.
+    # 
+    # Use the **TFIT - Ficsit Information Tool** mod or the Satisfactory wiki to find out how many points items are worth.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1000
+    # Maximum value is 10000000
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-1000-10000000: 0 # random value between 1000 and 10000000
+    ~500 screw/min: 0 # equivalent to 1000
+    ~100 reinforced iron plate/min: 0 # equivalent to 12000
+    ~100 stator/min: 0 # equivalent to 24000
+    ~100 modular frame/min: 0 # equivalent to 40000
+    ~100 smart plating/min: 0 # equivalent to 50000
+    ~20 crystal oscillator/min: 0 # equivalent to 60000
+    ~50 motor/min: 0 # equivalent to 76000
+    ~10 heavy modular frame/min: 50 # equivalent to 100000
+    ~10 radio control unit/min: 0 # equivalent to 300000
+    ~10 fused modular frame/min: 0 # equivalent to 625000
+    ~10 supercomputer/min: 0 # equivalent to 1000000
+    ~10 pressure conversion cube/min: 0 # equivalent to 2500000
+    ~10 nuclear pasta/min: 0 # equivalent to 5000000
+    ~4 ballistic warp drive/min: 0 # equivalent to 10000000
+
+  goal_exploration_collectables_amount:
+    # Does nothing if *Exploration Collectables* goal is not enabled.
+    # 
+    # Collect this amount of Mercer Spheres, Somersloops, Hard Drives, Paleberries, Beryl Nuts, and Bacon Agarics each to finish.
+    # 
+    # - The amount of **Mercer Spheres** is **2x** the selected amount
+    # - The amount of **Somersloops** is **the** selected amount
+    # - The amount of **Hard Drives** is **1/5th** the selected amount
+    # - The amount of **Paleberries** is **10x** the selected amount
+    # - The amount of **Beryl Nuts** is **20x** the selected amount
+    # - The amount of **Bacon Agarics** is **the** selected amount
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 5
+    # Maximum value is 100
+    20: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-5-100: 0 # random value between 5 and 100
+
+  ###################
+  # Placement logic #
+  ###################
+  starting_inventory_preset:
+    # What resources (and buildings) the player should start with in their inventory.
+    # If you want more control, visit the Weighted Options page or edit the YAML directly.
+    # 
+    # - **Barebones**: Nothing but the default xeno zapper and buildings.
+    # - **Skip Tutorial Inspired**: Inspired by the items you would have if you skipped the base game's tutorial.
+    # - **Archipelago**: The starting items we think will lead to a fun experience.
+    # - **Foundations**: 'Archipelago' option, but also guaranteeing that you have foundations unlocked at the start.
+    # - **Foundation Lover**: You really like foundations.
+    # - **Explorer**: 'Foundations' option plus one set of early exploration equipment (Parachute, Blade Runners, Object Scanner, Boom Box).
+    barebones: 0
+    skip_tutorial_inspired: 0
+    archipelago: 50
+    foundations: 0
+    foundation_lover: 0
+    explorer: 0
+
+  randomize_starter_recipes:
+    # Randomizes what recipes you use to craft the default unlocked parts:
+    # Iron Ingot, Iron Plate, Iron Rod, Copper Ingot, Wire, Concrete, Screw, Reinforced Iron Plate
+    # 
+    # * Could require usage of Foundries or Assemblers (which get unlocked by default if needed, at reduced build costs)
+    # * Could require other ores to be mixed in via alt recipes (which will become hand-craftable if needed)
+    'false': 0
+    'true': 50
+
+  mam_logic_placement:
+    # Where to place the MAM building in logic.
+    # Earlier means it will be more likely that you will need to interact with it for progression purposes.
+    unlocked_from_start: 0
+    early_game: 0
+    somewhere: 50
+
+  awesome_logic_placement:
+    # Where to place the AWESOME Shop and Sink buildings in logic.
+    # Earlier means it will be more likely that you will need to interact with it for progression purposes.
+    unlocked_from_start: 0
+    early_game: 0
+    somewhere: 50
+
+  splitter_placement:
+    # Where to place the Conveyor Splitter and Merger buildings in logic.
+    # Earlier means it will be more likely that you will need to interact with it for progression purposes.
+    unlocked_from_start: 0
+    early_game: 0
+    somewhere: 50
+
+  energy_link_logic_placement:
+    # Where to place the EnergyLink building (or Power Storage if EnergyLink is disabled) in logic.
+    # Earlier means it will be more likely that you will need to interact with it for progression purposes.
+    unlocked_from_start: 0
+    early_game: 0
+    somewhere: 50
+
+  ################
+  # Free Samples #
+  ################
+  free_sample_equipment:
+    # How many free sample Equipment items are given when they are unlocked.
+    # 
+    # (ex. Jetpack, Rifle)
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 10
+    1: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-10: 0 # random value between 0 and 10
+
+  free_sample_buildings:
+    # How many copies of a Building's construction cost are given as a free sample when they are unlocked.
+    # Space Elevator is always excluded.
+    # 
+    # (ex. Packager, Constructor, Smelter)
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 10
+    5: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-10: 0 # random value between 0 and 10
+
+  free_sample_parts:
+    # How many general crafting component free samples are given when their recipe is unlocked.
+    # Space Elevator Project Parts are always excluded.
+    # 
+    # Negative numbers mean that fraction of a full stack.
+    # 
+    # (ex. Iron Plate, Packaged Turbofuel, Reinforced Modular Frame)
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is -5
+    # Maximum value is 500
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range--5-500: 0 # random value between -5 and 500
+    disabled: 0 # equivalent to 0
+    half_stack: 50 # equivalent to -2
+    one_stack: 0 # equivalent to -1
+    1: 0 # equivalent to 1
+    50: 0 # equivalent to 50
+    100: 0 # equivalent to 100
+    200: 0 # equivalent to 200
+    500: 0 # equivalent to 500
+
+  free_sample_radioactive:
+    # Allow free samples to include radioactive parts.
+    # Remember, they are delivered directly to your player inventory.
+    'false': 50
+    'true': 0
+
+  #########
+  # Traps #
+  #########
+  trap_chance:
+    # Chance of traps in the item pool.
+    # Traps will only replace filler items such as parts and resources.
+    # 
+    # - **0:** No traps will be present
+    # - **100:** Every filler item will be a trap.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    10: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  trap_selection_preset:
+    # Themed presets of trap types to enable.
+    # 
+    # If you want more control, use *Trap Override* or visit the Weighted Options page.
+    gentle: 0
+    normal: 0
+    harder: 0
+    all: 50
+    ruthless: 0
+    all_arachnids_all_the_time: 0
+    whole_hog: 0
+    nicholas_cage: 0
+    fallout: 0
+
+  trap_selection_override:
+    # Precise list of traps that may be in the item pool to find.
+    # If you select anything with this option it will be used instead of the *Trap Presets* setting.
+    []
+
+  ###########################
+  # Item & Location Options #
+  ###########################
+  local_items:
+    # Forces these items to be in their native world.
+    []
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with the specified amount of these items. Example: "Bomb: 1"
+    {}
+
+  start_inventory_from_pool:
+    # Start with the specified amount of these items and don't place them in the world. Example: "Bomb: 1"
+    # 
+    # The game decides what the replacement items will be.
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    []
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []
+
+  plando_items:
+    # Generic items plando.
+    []
