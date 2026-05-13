@@ -1,0 +1,11 @@
+[2026-03-24 22:08:33,400]: Current options:
+[2026-03-24 22:08:33,400]: Option hint_cost is set to 10
+[2026-03-24 22:08:33,400]: Option location_check_points is set to 1
+[2026-03-24 22:08:33,400]: Option server_password is set to None
+[2026-03-24 22:08:33,400]: Option password is set to None
+[2026-03-24 22:08:33,400]: Option release_mode is set to goal
+[2026-03-24 22:08:33,400]: Option remaining_mode is set to goal
+[2026-03-24 22:08:33,400]: Option collect_mode is set to goal
+[2026-03-24 22:08:33,400]: Option countdown_mode is set to auto
+[2026-03-24 22:08:33,400]: Option item_cheat is set to False
+[2026-03-24 22:08:33,400]: Option compatibility is set to 2

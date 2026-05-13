@@ -1,0 +1,10 @@
+# Ignore admin folders and generated secrets
+.admin/
+.generated-secrets-hidden
+
+# Ignore any subdirectories with .admin
+**/.admin/
+
+# Other common ignores (if needed)
+# *.log
+# .DS_Store
