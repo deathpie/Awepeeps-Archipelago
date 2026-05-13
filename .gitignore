@@ -1,9 +1,8 @@
-# Ignore admin folders and generated secrets
+# Ignore root admin folder
 .admin/
-.generated-secrets-hidden
 
-# Ignore any subdirectories with .admin
-**/.admin/
+# Ignore hidden secrets but allow revealed
+.secrets/hidden/
 
 # Other common ignores (if needed)
 # *.log

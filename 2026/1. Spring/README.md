@@ -1,5 +1,13 @@
 # Spring 2026 Games
 
+## Session Links
+
+- **Google Sheet**: [https://docs.google.com/spreadsheets/d/1BlnBHy-FUT1G1OdmJQVLoXQSMxGA3aAajki1QENhC2E/edit?gid=0#gid=0](https://docs.google.com/spreadsheets/d/1BlnBHy-FUT1G1OdmJQVLoXQSMxGA3aAajki1QENhC2E/edit?gid=0#gid=0)
+- **Archipelago Room**: [https://archipelago.gg/room/0GhzlOPTSqeMmI3H92h9pQ](https://archipelago.gg/room/0GhzlOPTSqeMmI3H92h9pQ)
+- **YAML Configurations**: [YAML/](YAML/)
+- **APWorld Files**: [APWorld/](APWorld/)
+- **Secrets and Spoilers**: [.secrets/](.secrets/)
+
 | Game | Info | Setup Guide | APWorld | PopTracker | Misc. |
 |------|------|-------------|---------|------------|-------|
 | Dark Souls III | [Dark Souls III Info](https://archipelago.gg/games/Dark%20Souls%20III/info/en) | [Dark Souls III Setup Guide](https://archipelago.gg/tutorial/Dark%20Souls%20III/setup_en) | - | [Dark Souls III PopTracker](https://github.com/Br00ty/DS3_AP_Maptracker/releases) | - |
