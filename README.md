@@ -14,6 +14,7 @@ This repository organizes Archipelago multiworld game configurations, setups, an
 
 - Refer to each season's README for game-specific setup instructions and links
 - YAML files contain player configurations for Archipelago generations
+- See [Archipelago.md](Archipelago.md) for general Archipelago resources and links
 - Follow the guidelines in `.instructions.md` for maintaining consistency
 
 ## Contributing
