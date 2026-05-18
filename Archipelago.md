@@ -34,3 +34,4 @@ This document provides key links and resources for Archipelago multiworld random
 
 - This is a curated list of essential Archipelago resources for setup, gameplay, and community support.
 - Check the season-specific READMEs in this repository for game-specific guides and links.
+ - Repository policy: this repository does not provide or link to ROMs. Any ROM links found in season READMEs or other files will be removed; maintainers should not add ROM download links here.
