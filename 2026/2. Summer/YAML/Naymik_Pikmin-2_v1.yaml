@@ -1,4 +1,4 @@
-# Q. What is this file?
+﻿# Q. What is this file?
 # A. This file contains options which allow you to configure your multiworld experience while allowing
 #    others to play how they want as well.
 #
@@ -25,7 +25,7 @@
 #     {PLAYER} will be replaced with the player's slot number, if that slot number is greater than 1.
 #     {number} will be replaced with the counter value of the name.
 #     {NUMBER} will be replaced with the counter value of the name, if the counter value is greater than 1.
-name: Naymik-{player}
+name: Naymik-{number}
 
 # Used to describe your yaml. Useful if you have multiple files.
 description: Default Pikmin 2 Template
@@ -312,4 +312,3 @@ Pikmin 2:
   plando_items:
     # Generic items plando.
     []
-
