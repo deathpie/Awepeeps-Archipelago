@@ -4,6 +4,9 @@
 # Ignore hidden secrets but allow revealed
 .secrets/hidden/
 
+# Ignore local Summer ROM stash
+2026/2. Summer/.roms/
+
 # Other common ignores (if needed)
 # *.log
 # .DS_Store

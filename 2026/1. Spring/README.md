@@ -1,5 +1,12 @@
 # Spring 2026 Games
 
+> **Status:** Inactive — archived and read-only. Do not modify this file via automated edits; changes must be made manually by repository maintainers.
+
+## Run Dates
+
+- **Start:** March 21, 2026 — 7:00 PM Eastern
+- **End:** April 7, 2026 — 7:36 PM Eastern
+
 ## Session Links
 
 - **Google Sheet**: [https://docs.google.com/spreadsheets/d/1BlnBHy-FUT1G1OdmJQVLoXQSMxGA3aAajki1QENhC2E/edit?gid=0#gid=0](https://docs.google.com/spreadsheets/d/1BlnBHy-FUT1G1OdmJQVLoXQSMxGA3aAajki1QENhC2E/edit?gid=0#gid=0)
