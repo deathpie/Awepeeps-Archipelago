@@ -163,4 +163,4 @@ Paper Mario:
     death_link: False                       # NYI
 description: Sample Paper Mario AP World YAML
 game: Paper Mario
-name: JKB
+name: William-{player}

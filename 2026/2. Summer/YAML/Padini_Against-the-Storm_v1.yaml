@@ -1,0 +1,56 @@
+name: Padini-{player}
+description: Default YAML provided for Against the Storm
+game: Against the Storm
+Against the Storm:
+
+  # Enable production building recipe shuffle. Will maintain the number of recipes available for goods and buildings.
+  # This includes glade events as well, such as the flawless buildings! Can skip Crude WS for less frustrating seeds.
+  # - vanilla (default): No shuffle
+  # - exclude_crude_ws_and_ms_post: Will shuffle all recipes, but leave the crude workstation and makeshift post alone
+  # - exclude_crude_ws: Will shuffle all recipes, but leave the crude workstation alone
+  # - exclude_ms_post: Will shuffle all recipes, but leave the makeshift post alone
+  # - full_shuffle: Will shuffle all recipes, including the crude workstation and makeshift post
+  recipe_shuffle: vanilla
+
+  # Enable death link. Can send on villager leaving and/or death.
+  # - off (default): No deathlink
+  # - death_only: A villager dies when receiving a deathlink, and send a deathlink when a villager dies
+  # - leave_and_death: A villager dies when receiving a deathlink, and send a deathlink when a villager dies OR leaves
+  deathlink: off
+
+  # When enabled, you will no longer draft building blueprints as a reputation reward. Instead, all blueprints will become AP items,
+  # which will become essential blueprints when you receive them from the multiworld.
+  # This will make the start of a multiworld quite a bit harder, but the end quite a bit easier.
+  blueprint_items: false
+
+  # Continue to offer blueprint selections as rewards for reputation, even with Blueprint Items on.
+  continue_blueprints_for_reputation: false
+
+  # Shuffle 4 Seal related items. You will not be able to complete a stage of the Seal until receiving the relevant item.
+  seal_items: true
+
+  # Increase the number of tasks you need to complete at each stage of the Seal, making the final settlement MUCH harder.
+  # Range: 1 to 3
+  required_seal_tasks: 1
+
+  # Enable Keepers of the Stone DLC related locations: Frogs, Coastal Grove, and Ashen Thicket.
+  enable_keepers_dlc: false
+
+  # Enable Nightwatchers DLC related locations: Bats, Bamboo Flats, and Rocky Ravine.
+  enable_nightwatchers_dlc: false
+
+  # Enable biome keys, progression items that prevent you from playing in a biome until receiving the corresponding key
+  enable_biome_keys: true
+
+  # Number of locations to place in the Coastal Grove's Strider Port. Will be ignored if DLC is off.
+  # Range: 0 to 20
+  grove_expedition_locations: 4
+
+  # Set the number of locations spread between the 1st and 18th reputation in each biome.
+  # This option will be increased before generation with a warning when Blueprint Items is on to ensure enough locations.
+  # Range: 1 to 16
+  reputation_locations_per_biome: 3
+
+  # Set the number of goods that will be chosen as additional trade locations.
+  # Range: 0 to 52
+  extra_trade_locations: 5
