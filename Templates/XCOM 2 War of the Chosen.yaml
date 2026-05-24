@@ -132,7 +132,7 @@ XCOM 2 War of the Chosen:
     # Valid values: 'RifleTech', 'RifleTech+' (includes [Tech] Modular Weapons),
     #               'ArmorTech', 'ArmorTech+' (includes [Tech] Hybrid Materials),
     #               'MeleeWeaponTech', 'GREMLINTech', 'PsionicsTech'
-    ['RifleTech', 'MeleeWeaponTech', 'PsionicsTech', 'GREMLINTech', 'ArmorTech']
+    ['ArmorTech', 'PsionicsTech', 'GREMLINTech', 'MeleeWeaponTech', 'RifleTech']
 
   chosen_weapon_fragments:
     # Split Chosen weapons into two or three fragments each. Collect all fragments to unlock the corresponding tech.
@@ -268,13 +268,13 @@ XCOM 2 War of the Chosen:
     # Automatically skip these mission types when they are spawned from a regular calendar event.
     # Can be changed in-game via Mod Config Menu.
     # Valid values: 'SupplyRaid', 'CouncilMission', 'ResistanceOp'
-    ['SupplyRaid', 'ResistanceOp', 'CouncilMission']
+    ['CouncilMission', 'ResistanceOp', 'SupplyRaid']
 
   disable_covert_action_risks:
     # Disable these covert action risks.
     # Can be changed in-game via Mod Config Menu.
     # Valid values: 'Ambush', 'Capture'
-    ['Ambush', 'Capture']
+    ['Capture', 'Ambush']
 
   supply_raid_reward_base:
     # Set the amount of resources that are rewarded for skipped supply raids.

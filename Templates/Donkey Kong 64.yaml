@@ -806,7 +806,7 @@ Donkey Kong 64:
     # "DisableZKop"
     # "DisableTaggingKop"
     # "GetOutKop"
-    ['ZingerRobo', 'GetOut', 'LankyKasplat', 'BeaverGold', 'DisableAKop', 'GreenKlaptrap', 'TinyKasplat', 'FireballGlass', 'ChunkyKasplat', 'Ghost', 'DiddyKasplat', 'GreenDice', 'MushroomMan', 'Bug', 'Kosha', 'SirDomino', 'GetOutKop', 'ZingerLime', 'Ruler', 'PurpleKlaptrap', 'BeaverBlue', 'ZingerCharger', 'Gimpfish', 'DisableTaggingKop', 'Bat', 'RedKlaptrap', 'RoboKremling', 'Kaboom', 'Kremling', 'Klobber', 'Kop', 'Pufftup', 'SpiderSmall', 'DisableZKop', 'Shuri', 'RedDice', 'DKKasplat', 'Krossbones', 'Klump']
+    ['BeaverGold', 'RedKlaptrap', 'MushroomMan', 'Kosha', 'RoboKremling', 'Ghost', 'Ruler', 'DisableTaggingKop', 'Klump', 'RedDice', 'DiddyKasplat', 'Shuri', 'ZingerCharger', 'FireballGlass', 'Kremling', 'Krossbones', 'SirDomino', 'LankyKasplat', 'ChunkyKasplat', 'GetOutKop', 'GetOut', 'DisableZKop', 'TinyKasplat', 'DKKasplat', 'Klobber', 'Gimpfish', 'PurpleKlaptrap', 'DisableAKop', 'Bug', 'ZingerRobo', 'Kop', 'GreenDice', 'SpiderSmall', 'Bat', 'Pufftup', 'Kaboom', 'GreenKlaptrap', 'ZingerLime', 'BeaverBlue']
 
   #########
   # Hints #

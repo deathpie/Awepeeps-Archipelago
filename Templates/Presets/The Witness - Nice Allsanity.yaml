@@ -404,7 +404,7 @@ The Witness:
     # - Quarry Elevator: Makes the Quarry Elevator come down when you approach it from lower Quarry and back up when you approach it from above
     # - Swamp Long Bridge: Rotates the side you approach it from towards you, but also rotates the other side away
     # - Bunker Elevator: Makes the Bunker Elevator come to any floor that you approach it from, meaning it can be accessed from the roof immediately
-    ['Quarry Elevator', 'Bunker Elevator', 'Swamp Long Bridge']
+    ['Swamp Long Bridge', 'Quarry Elevator', 'Bunker Elevator']
 
   death_link:
     # If on, whenever you fail a puzzle (with some exceptions), you and everyone who is also on Death Link dies.

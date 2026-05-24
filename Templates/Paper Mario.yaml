@@ -1,0 +1,1140 @@
+﻿# Q. What is this file?
+# A. This file contains options which allow you to configure your multiworld experience while allowing
+#    others to play how they want as well.
+#
+# Q. How do I use it?
+# A. The options in this file are weighted. This means the higher number you assign to a value, the
+#    more chances you have for that option to be chosen. For example, an option like this:
+#
+#    map_shuffle:
+#      on: 5
+#      off: 15
+#
+#    Means you have 5 chances for map shuffle to occur, and 15 chances for map shuffle to be turned
+#    off.
+#
+# Q. I've never seen a file like this before. What characters am I allowed to use?
+# A. This is a .yaml file. You are allowed to use most characters.
+#    To test if your yaml is valid or not, you can use this website:
+#        http://www.yamllint.com/
+#    You can also verify that your Archipelago options are valid at this site:
+#        https://archipelago.gg/check
+
+# Your name in-game, limited to 16 characters.
+#     {player} will be replaced with the player's slot number.
+#     {PLAYER} will be replaced with the player's slot number, if that slot number is greater than 1.
+#     {number} will be replaced with the counter value of the name.
+#     {NUMBER} will be replaced with the counter value of the name, if the counter value is greater than 1.
+name: Player{number}
+
+# Used to describe your yaml. Useful if you have multiple files.
+description: Default Paper Mario Template
+
+game: Paper Mario
+requires:
+  version: 0.6.7 # Version of Archipelago required for this yaml to work as expected.
+
+Paper Mario:
+  ################
+  # Game Options #
+  ################
+  progression_balancing:
+    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
+    # 
+    # A lower setting means more getting stuck. A higher setting means less getting stuck.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-99: 0 # random value between 0 and 99
+    disabled: 0 # equivalent to 0
+    normal: 50 # equivalent to 50
+    extreme: 0 # equivalent to 99
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Full:** ensure everything can be reached and acquired.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    full: 50
+    minimal: 0
+
+  keysanity:
+    # If disabled, keys that are used within dungeons can only be found in their respective dungeons.
+    'false': 0
+    'true': 50
+
+  shuffle_hidden_panels:
+    # Hidden panels can have any item; the star pieces normally hidden under them are added to the item pool. To flip
+    # hidden panels, you need Super Boots or Ultra Hammer.
+    'false': 50
+    'true': 0
+
+  gear_shuffle_mode:
+    # Vanilla: Gear (Boots and Hammers) appear in their vanilla locations
+    # Gear Location Shuffle: Gear is shuffled amongst the upgrade chests and the bush in Jr. Troopa's playground
+    # Full Shuffle: Gear can be anywhere.
+    vanilla: 0
+    gear_location_shuffle: 0
+    full_shuffle: 50
+
+  trading_events:
+    # Adds the 3 rewards obtained for doing the Trading Toad quests (started via Koopa Village's radio) into the item
+    # pool. These checks are available with 1, 3, and 5 star spirits saved.
+    'false': 50
+    'true': 0
+
+  koot_favors:
+    # Koopa Koot's Favors unlock after ridding the village of the Fuzzies, and three more are unlocked per star spirit
+    # saved up to 6 star spirits.
+    # Vanilla: Koopa Koot Favor rewards and quest items are unshuffled.
+    # Shuffle rewards: Shuffle the favor rewards, but not the key items for his quests.
+    # Full Shuffle: Shuffle the rewards AND the quest key items.
+    vanilla: 50
+    shuffle_rewards: 0
+    full_shuffle: 0
+
+  koot_coins:
+    # Coins from Koopa Koot's favor rewards are included in the item pool.
+    # Only has an effect when Koopa Koot's rewards are shuffled.
+    'false': 50
+    'true': 0
+
+  overworld_coins:
+    # Overworld coins are included in the item pool
+    'false': 50
+    'true': 0
+
+  foliage_coins:
+    # Coins from bushes and trees are included in the item pool.
+    # It's recommended to turn on 'Foliage Item Hints' with this setting.
+    'false': 50
+    'true': 0
+
+  coin_blocks:
+    # Single coin blocks are included in the item pool
+    'false': 50
+    'true': 0
+
+  include_shops:
+    # Shop items are included in the item pool.
+    # This includes regular item shops, Rowf's badge shop, and Merlow's star piece trade
+    'false': 0
+    'true': 50
+
+  dojo:
+    # Number of Dojo fights with randomized rewards. The logic can only expect you to do the 2nd fight with 1 star
+    # spirit saved. The three Master fights are only in logic after you have 3, 4, and 5 star spirits saved.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 5
+    0: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-5: 0 # random value between 0 and 5
+
+  partner_upgrades:
+    # Vanilla: Partners are upgraded through super blocks as usual.
+    # Super Block Locations: Super blocks are replaced by item blocks that give partner specific upgrade items.
+    # Full Shuffle: Super blocks are replaced with item blocks and specific partner upgrades are added as
+    # items in the pool.
+    vanilla: 50
+    super_block_locations: 0
+    full_shuffle: 0
+
+  letter_rewards:
+    # Vanilla: Letter rewards remain unshuffled.
+    # Vanilla Letter Chain: Shuffle delivery rewards, but don't shuffle anything in the long letter chain.
+    # Final Letter Chain Reward: Shuffle letter delivery rewards and the final reward of the long letter chain.
+    # Full shuffle: Every letter delivery reward is shuffled, effectively removing the letter
+    # chain as each letter in the chain is shuffled.
+    vanilla: 50
+    vanilla_letter_chain: 0
+    final_letter_chain_reward: 0
+    full_shuffle: 0
+
+  super_multi_blocks:
+    # Off: Super Blocks and Multicoin blocks appear in their usual locations
+    # Shuffle: Shuffles the locations of the Super Blocks and Multicoin Brick Blocks together
+    # Anywhere: Multi coin blocks can be shuffled into non-block locations, which turns them into 'Coin Bag' items that
+    # grant you 10 coins.
+    'off': 50
+    shuffle: 0
+    anywhere: 0
+
+  rowf_items:
+    # Determines how many sets of items sold by Rowf are candidates for progression items.
+    # He sells 4 items initially, and 3 more for each Star Spirit up to saved 4 Spirits, up to 16 total items.
+    # Note: You can talk to him and request he change his offerings.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 5
+    5: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-5: 0 # random value between 0 and 5
+
+  merlow_items:
+    # Determines whether Merlow's Star Piece rewards can be required for progression. The items that you buy directly
+    # are never progression items. This is specifically for the rewards which are granted after spending X Star Pieces.
+    'false': 50
+    'true': 0
+
+  cheato_items:
+    # Number of items sold by Rip Cheato that can be required by logic.
+    # Items in logic will always be sold by him before the out of logic ones.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 11
+    6: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-11: 0 # random value between 0 and 11
+
+  local_consumables:
+    # A percentage of consumable items will remain in the player's world instead of being shuffled into the multiworld.
+    # This can prevent other people from getting too many of your filler items, as well as make it easier to restock your
+    # inventory without farming items from enemies or using a potentially limited variety of consumables.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 100
+    100: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-100: 0 # random value between 0 and 100
+
+  partners:
+    # Partners become items in the item pool, and you get an item where you would normally get a partner.
+    'off': 50
+    partner_locations: 0
+    full_shuffle: 0
+
+  partners_always_usable:
+    # All partner field abilities are available to use even before you have unlocked them.
+    'false': 50
+    'true': 0
+
+  start_random_partners:
+    # Start with a random set of partners.
+    'false': 0
+    'true': 50
+
+  start_partners:
+    # Number of random partners you start with, from 1 to 8
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 8
+    1: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-1-8: 0 # random value between 1 and 8
+
+  start_with_goombario:
+    # Have Goombario as a starting partner. You must have at least one partner selected or be given a random one.
+    'false': 50
+    'true': 0
+
+  start_with_kooper:
+    # Have Kooper as a starting partner. You must have at least one partner selected or be given a random one.
+    'false': 50
+    'true': 0
+
+  start_with_bombette:
+    # Have Bombette as a starting partner. You must have at least one partner selected or be given a random one.
+    'false': 50
+    'true': 0
+
+  start_with_parakarry:
+    # Have Parakarry as a starting partner. You must have at least one partner selected or be given a random one.
+    'false': 50
+    'true': 0
+
+  start_with_bow:
+    # Have Bow as a starting partner. You must have at least one partner selected or be given a random one.
+    'false': 50
+    'true': 0
+
+  start_with_watt:
+    # Have Watt as a starting partner. You must have at least one partner selected or be given a random one.
+    'false': 50
+    'true': 0
+
+  start_with_sushie:
+    # Have Sushie as a starting partner. You must have at least one partner selected or be given a random one.
+    'false': 50
+    'true': 0
+
+  start_with_lakilester:
+    # Have Lakilester as a starting partner. You must have at least one partner selected or be given a random one.
+    'false': 50
+    'true': 0
+
+  badge_bp_shuffle:
+    # Vanilla: Badges have their original Badge Point (BP) costs.
+    # Balanced Random: Random BP costs 1-8, but weighted so most are +/-2 from vanilla.
+    # Shuffled: Original BP costs are shuffled together.
+    # Fully Random: Random BP costs from 1-6, unweighted.
+    vanilla: 50
+    balanced_random: 0
+    shuffled: 0
+    fully_random: 0
+
+  badge_fp_shuffle:
+    # Vanilla: Abilities granted by badges have their original Flower Point (FP) costs.
+    # Shuffled: Original FP costs are shuffled together.
+    # Balanced Random: Random FP costs 1-7, but weighted so most are +/-2 from vanilla.
+    # Fully Random: Random FP costs from 1-7, unweighted.
+    vanilla: 50
+    balanced_random: 0
+    shuffled: 0
+    fully_random: 0
+
+  partner_fp_shuffle:
+    # Vanilla: Partner special attacks have their original Flower Point (FP) costs.
+    # Shuffled: Original FP values are shuffled together.
+    # Balanced Random: Random FP values 1-8, but weighted so most are +/-2 from vanilla.
+    # Fully Random: Random FP values from 1-8, unweighted.
+    vanilla: 50
+    balanced_random: 0
+    shuffled: 0
+    fully_random: 0
+
+  sp_shuffle:
+    # Vanilla: Star Spirit abilities have their original Star Power (SP) costs.
+    # Shuffled: Original SP costs are shuffled together.
+    # Balanced Random: Random SP costs 1-3, but weighted so most are +/-1 from vanilla.
+    # Fully Random: Random SP costs from 1-3, unweighted.
+    vanilla: 50
+    balanced_random: 0
+    shuffled: 0
+    fully_random: 0
+
+  mystery_shuffle:
+    # Vanilla: Mystery will pull from the vanilla item pool (one of six basic items).
+    # Random Pick: Mystery will be a random item for the full playthrough.
+    # Random Per Use: Mystery will be a random item on every use.
+    vanilla: 50
+    random_pick: 0
+    random_per_use: 0
+
+  formation_shuffle:
+    # Shuffles which enemies you encounter and in what number.
+    # Enemies are limited to those that normally appear in the area.
+    'false': 50
+    'true': 0
+
+  random_puzzles:
+    # Randomizes most of the game's puzzles.
+    # See https://github.com/icebound777/PMR-SeedGenerator/wiki/Random-Puzzles for a full list.
+    'false': 50
+    'true': 0
+
+  boss_shuffle:
+    # Shuffles end of chapter bosses. While enabled, Mario can run on the first turn of a boss battle.
+    # Note: This is not yet implemented and will fail to generate if set to True.
+    'false': 50
+    'true': 0
+
+  blooper_damage_requirements:
+    # There are 3 Blooper fights. Regardless of what order you visit the fight locations, you always fight Blooper,
+    # then Electro Blooper, then Super Blooper. This setting can add logic such that you are able to deal enough damage
+    # per turn with jump and partner attacks to comfortably defeat all 3 Bloopers before needing to defeat any of them.
+    # Note that damage is calculated only by partners and boot upgrades, not badges or partner upgrades/abilities.
+    # None: No logical requirements to defeat Bloopers
+    # Low: 3 damage per turn required
+    # Medium: 6 damage per turn required
+    # High: 9 damage per turn required
+    none: 50
+    low: 0
+    medium: 0
+    high: 0
+
+  enemy_difficulty:
+    # Vanilla: Original enemy stats.
+    # Shuffle Chapter Difficulty: Each chapter is assigned a new number, enemies are scaled accordingly.
+    # Progressive Scaling: Enemies scale as Mario gains more progression items and partners.
+    vanilla: 0
+    shuffle_chapter_difficulty: 0
+    progressive_scaling: 50
+
+  enemy_damage:
+    # Increases the damage done by enemy attacks.
+    normal: 50
+    double_pain: 0
+    quadruple_pain: 0
+
+  cap_enemy_xp:
+    # Limits the amount of XP per defeated enemy to 5.
+    'false': 50
+    'true': 0
+
+  enemy_xp_multiplier:
+    # Increase or decrease the star points gained from enemies. Double the desired value for this setting.
+    # ex: if you want double XP, set this to 4; for vanilla XP, set this to 2
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 4
+    2: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-4: 0 # random value between 0 and 4
+
+  no_save_blocks:
+    # Remove save blocks from the game. You can still save at the end of each chapter.
+    'false': 50
+    'true': 0
+
+  no_heart_blocks:
+    # Remove heart blocks from the game
+    'false': 50
+    'true': 0
+
+  no_healing_items:
+    # HP/FP restoring items will have no effect.
+    'false': 50
+    'true': 0
+
+  one_hit_ko:
+    # Mario will die instantly from an enemy attack if a block action command is failed
+    'false': 50
+    'true': 0
+
+  drop_star_points:
+    # Mario will drop star points when running away from battle.
+    # Equipping the Runaway Pay badge will prevent him from dropping star points.
+    'false': 50
+    'true': 0
+
+  badge_synergy:
+    # Increases Mario's attack power with boots or hammer attacks the more badges of similar type he wears.
+    'false': 50
+    'true': 0
+
+  merlow_rewards_pricing:
+    # Cheap: Rewards every 5 star pieces spent, up to 30 total.
+    # Normal: Rewards every 10 star pieces spent, up to 60 total.
+    cheap: 50
+    vanilla: 0
+
+  chet_rippo:
+    # Determines if Chet Rippo, the shady NPC who you can pay to reallocate Mario's stats, appears in Toad Town.
+    'false': 50
+    'true': 0
+
+  bowser_door_quiz:
+    # Quiz: The second Bowser door in Bowser's castle has a quiz. Pass it or be forced to fight the anti-guy unit.
+    # Anti Guys Unit: The second Bowser door in Bowser's castle has no quiz; you must fight the anti guys unit.
+    # Skip: The second Bowser door in Bowser's castle is open as though the quiz has already been completed.
+    quiz: 50
+    anti_guys_unit: 0
+    skip: 0
+
+  kent_c_koopa:
+    # Blocks Pleasant Path: You must pay 50 coins or defeat him to get into Pleasant Path.
+    # Must Defeat: You must defeat him to get into Pleasant Path. Expects two chapters completed and a way to flip him.
+    # Already Paid: Stands on the side of Pleasant Path as if already paid.
+    # Already Defeated: Removed from Pleasant Path as if already defeated.
+    blocks_pleasant_path: 50
+    must_defeat: 0
+    already_paid: 0
+    already_defeated: 0
+
+  seed_goal:
+    # Defeat Bowser: The game is complete once you've defeated Bowser to take back the Star Rod.
+    # Open Star Way: The game is complete once you've fulfilled the requirements to open Star Way
+    defeat_bowser: 50
+    open_star_way: 0
+
+  power_star_hunt:
+    # Adds power stars into the item pool. You must collect a certain amount and give them to Eldstar at
+    # Shooting Star Summit to open up Star Way.
+    'false': 50
+    'true': 0
+
+  spirit_requirements:
+    # Determines if specific spirits are needed to open star way.
+    # Any: Any spirits can open Star Way.
+    # Specific: A set of specific spirits open Star Way. You can find which are required by visiting Shooting Star Summit.
+    # Specific and Limit Chapter Logic: Progression items will be limited to prologue, common areas, and areas in required
+    # chapters.
+    any: 50
+    specific: 0
+    specific_and_limit_chapter_logic: 0
+
+  star_way_spirits:
+    # Number of star spirits required to open up Star Way and access Chapter 8.
+    # Access requirements will also include power stars if Power Star Hunt is turned on.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 7
+    5: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-7: 0 # random value between 0 and 7
+
+  star_way_power_stars:
+    # Number of power stars required to open up Star Way and access Chapter 8.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 120
+    50: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-120: 0 # random value between 0 and 120
+
+  shuffle_star_beam:
+    # Star Beam becomes an item shuffled in the item pool. Another random item will replace Star Beam in Star Haven.
+    # Upon reaching the first Bowser fight in Peach's Castle, he will tell you where Star Beam is.
+    'false': 50
+    'true': 0
+
+  star_beam_spirits:
+    # Number of star spirits required to obtain the item in the Star Beam location in Star Sanctuary.
+    # Forced to 0 when Limit Chapter Logic is active.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 7
+    0: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-7: 0 # random value between 0 and 7
+
+  star_beam_power_stars:
+    # Number of power stars required to be gifted the Star Beam in Star Sanctuary
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 120
+    50: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-120: 0 # random value between 0 and 120
+
+  total_power_stars:
+    # Number of power stars placed in the game world. Must be more than the "Required Power Stars".
+    # It's recommended that this is around 1.5 times the number of required stars.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 120
+    70: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-120: 0 # random value between 0 and 120
+
+  starting_boots:
+    # Level of the boots that Mario will start the game with.
+    # Note: While jumpless, you can still climb up some places with Parakarry.
+    # You can also hit floating blocks by using Kooper's ability beneath them.
+    jumpless: 0
+    normal: 50
+    super: 0
+    ultra: 0
+
+  starting_hammer:
+    # Level of the hammer that Mario will start the game with.
+    # Note: Without hammer, you can still hit trees and break yellow blocks using Bombette's ability.
+    hammerless: 0
+    normal: 50
+    super: 0
+    ultra: 0
+
+  starting_coins:
+    # Amount of coins Mario will start the game with.
+    # Note: You will need to pay 50 coins to get past Kent C Koopa on the way to Koopa Village. It's recommended that you
+    # don't spend all your coins before paying him off.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 999
+    150: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-999: 0 # random value between 0 and 999
+
+  starting_hp:
+    # Amount of Health Points Mario will start the game with
+    # Note: Mario must have at least one starting stat raised past its initial value (5 for HP and FP, 3 for BP)
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 5
+    # Maximum value is 50
+    10: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-5-50: 0 # random value between 5 and 50
+
+  starting_bp:
+    # Amount of Badge Points Mario will start the game with
+    # Note: Mario must have at least one starting stat raised past its initial value (5 for HP and FP, 3 for BP)
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 3
+    # Maximum value is 30
+    3: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-3-30: 0 # random value between 3 and 30
+
+  starting_fp:
+    # Amount of Flower Points Mario will start the game with
+    # Note: Mario must have at least one starting stat raised past its initial value (5 for HP and FP, 3 for BP)
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 5
+    # Maximum value is 50
+    5: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-5-50: 0 # random value between 5 and 50
+
+  starting_sp:
+    # Amount of Star Power Mario will start the game with.
+    # Starting with SP allows Mario to use star powers, which will be cast by Twink until star spirits are saved.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 7
+    0: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-7: 0 # random value between 0 and 7
+
+  random_start_items:
+    # Number of random items you want to start with.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 16
+    0: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-16: 0 # random value between 0 and 16
+
+  random_start_stats:
+    # Instead of choosing starting stats, you can have them randomized based on a chosen starting level.
+    # Setting this to true will overwrite the starting BP, HP, and FP stat settings
+    # Base stats are 5 HP, 5 FP, and 3 BP, with each level raising one of these at random
+    'false': 50
+    'true': 0
+
+  random_start_stats_level:
+    # When random starting stats is true, this changes what level (1-27) Mario starts at.
+    # Starting stats will be randomly distributed and will overwrite the starting HP, FP, and BP stat settings
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 1
+    # Maximum value is 27
+    1: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-1-27: 0 # random value between 1 and 27
+
+  consumable_item_pool:
+    # Vanilla: Original consumable items.
+    # Mystery Only: All consumables are replaced by Mystery.
+    # Fully Random: Consumables are completely random.
+    # Balanced Random: Consumables are randomized and balanced according to Balanced Random Item Quality.
+    vanilla: 50
+    fully_random: 0
+    balanced_random: 0
+    mystery_only: 0
+
+  consumable_item_quality:
+    # Sets how powerful consumable items should be on average, where a higher % means better items.
+    # 100% is the strength of the vanilla item pool.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 25
+    # Maximum value is 125
+    100: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-25-125: 0 # random value between 25 and 125
+
+  item_traps:
+    # Replaces some items with fakes that deal 2 damage upon contact.
+    no_traps: 50
+    sparse: 0
+    moderate: 0
+    plenty: 0
+
+  item_pouches:
+    # Adds 5 item pouches into the item pool. Every pouch found increases Mario's inventory size by 2.
+    # This increases total inventory size from 10 items up to a maximum of 20.
+    'false': 50
+    'true': 0
+
+  unused_badge_dupes:
+    # Adds unused duplicates of badges that can stack into the item pool.
+    'false': 50
+    'true': 0
+
+  beta_items:
+    # Adds unused beta badges and consumable items into the item pool.
+    'false': 50
+    'true': 0
+
+  progressive_badges:
+    # Badges that come in different power levels are changed to progressive badges.
+    # This affects jump/hammer charge, power and mega jump/hammer, and quake hammer.
+    # Intermediate beta badges are included for the involved badge families even if beta badges are turned off.
+    'false': 50
+    'true': 0
+
+  badge_pool_limit:
+    # Sets the max amount of badges that can be in the item pool. There are 80 badges in vanilla.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 128
+    128: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-128: 0 # random value between 0 and 128
+
+  starting_map:
+    # Sets the town/village where the game starts.
+    # This is also where the Homeward Shroom warps Mario.
+    # You may use the warp shroom from the key items menu in the overworld.
+    toad_town: 50
+    goomba_village: 0
+    dry_dry_outpost: 0
+    yoshi_village: 0
+
+  open_prologue:
+    # When enabled, Goomba King starts off defeated and the bridge to reach Goomba Village will be open from the start.
+    # When starting from anywhere other than Goomba Village, this will mean having to reach the village via sewers.
+    'false': 50
+    'true': 0
+
+  open_mt_rugged:
+    # When enabled, the boulder blocking the train from going to Mt. Rugged will be gone from the start.
+    # When disabled, you will have to use Bombette to blow up the boulder.
+    'false': 50
+    'true': 0
+
+  open_forest:
+    # When enabled, Oakley allows you through Forever Forest with no requirements.
+    # When disabled, Oakley only allows you through once you have a Forest Pass (added randomizer item), and Fice T's
+    # cutscene will have an item check.
+    'false': 50
+    'true': 0
+
+  magical_seeds:
+    # The amount of Magical Seeds required to open the gate to Flower Fields. Changing this does not remove the
+    # Bub-ulb checks.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 4
+    4: 50
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-4: 0 # random value between 0 and 4
+
+  open_toybox:
+    # When enabled, you can open the door to enter Shy Guy's Toy Box from the start.
+    # When disabled, you will have to use Bow to hide from the Shy Guy to enter Shy Guy's Toy Box for the first time.
+    'false': 50
+    'true': 0
+
+  open_whale:
+    # When enabled, you can ride the whale to Lavalava Island from the start.
+    # When disabled, you will have to use Watt to catch and defeat Fuzzipede in order to ride the whale.
+    'false': 50
+    'true': 0
+
+  open_blue_house:
+    # When enabled, the door to the Blue House in Toad Town's Southern District is unlocked from the start
+    # and the Odd Key is removed from the item pool.
+    # When disabled, you will have to use the Odd Key to open the Blue House door.
+    'false': 50
+    'true': 0
+
+  ch7_bridge_visible:
+    # When enabled, blocks leading to Shiver City are visible and can be hit from above with Super Boots.
+    # When disabled, they will be invisible and you will have to hit them from below with Ultra Boots.
+    'false': 50
+    'true': 0
+
+  mirror_mode:
+    # Off: The overworld is never mirrored.
+    # Always On: The overworld is always mirrored.
+    # Random On Every Load: Whether the overworld is mirrored or not is random with every screen transition.
+    # Static Random: Some overworld screens are mirrored, some are not, but they won't change within a playthrough.
+    # Note: The Static Random option is not yet implemented and will fail to generate.
+    'off': 50
+    always_on: 0
+    random_on_every_load: 0
+    static_random: 0
+
+  bowser_castle_mode:
+    # Vanilla: Mario will need to go through the entire castle, requiring 5 keys and most partner abilities.
+    # Shortened: Multiple sections of Bowser's Castle will be skipped. No keys or partner abilities will be required.
+    # Boss Rush: The entire castle will be skipped until the hallway where you fight the Duplighosts.
+    vanilla: 50
+    shortened: 0
+    boss_rush: 0
+
+  shuffle_dungeon_entrances:
+    # Shuffles the main entrance of every chapter dungeon. You can also choose to include Bowser's Castle's entrance.
+    # Note: This is not yet implemented and will fail to generate if set to True.
+    'off': 50
+    only_spirit_dungeons: 0
+    include_bowsers_castle: 0
+
+  hidden_block_mode:
+    # Vanilla: Hidden blocks are only visible while using Watt's ability.
+    # Watt Out: Hidden blocks are visible when Watt is your active partner, even without using her ability.
+    # Watt Obtained: Hidden blocks are always visible after you have obtained Watt as a partner.
+    # Always Visible: Hidden blocks are always visible.
+    vanilla: 50
+    watt_out: 0
+    watt_obtained: 0
+    always_visible: 0
+
+  prevent_ooblzs:
+    # When enabled, prevents out of bound and loading zone storage tricks. This setting does NOT affect logic.
+    # Warning: in some cases, attempting OOB exploits with this enabled can cause softlocks since the game fails to
+    # properly reset Mario's position.
+    'false': 50
+    'true': 0
+
+  skip_quiz:
+    # When enabled, quiz rewards will be handed out without having to answer questions.
+    'false': 0
+    'true': 50
+
+  quizmo_always_appears:
+    # When enabled, Chuck Quizmo always appears somewhere in town until his location questions have been answered.
+    'false': 0
+    'true': 50
+
+  visible_hidden_panels:
+    # When enabled, hidden panels will have an altered appearance to make identifying them easier.
+    # Recommended for players not familiar with every single hidden panel locations when shuffling hidden panels.
+    'false': 0
+    'true': 50
+
+  always_speedy_spin:
+    # When enabled, Mario will always spin fast when pressing Z without needing to equip the Speedy Spin badge.
+    # The Speedy Spin badge is also removed from the item pool.
+    'false': 0
+    'true': 50
+
+  always_peekaboo:
+    # When enabled, you will always be able to see enemy's HP bars without needing to equip the Peekaboo badge.
+    # The Peekaboo badge is also removed from the item pool.
+    'false': 0
+    'true': 50
+
+  always_ispy:
+    # When enabled, you will always get an indicator if you enter a room with a hidden panel without needing to equip
+    # the I Spy badge. The sound effect is removed, so it is only a visual cue.
+    # The I Spy badge is also removed from the item pool.
+    # Recommended for players not familiar with every single hidden panel locations when shuffling hidden panels.
+    'false': 0
+    'true': 50
+
+  ispy_panel_hints:
+    # Off: Don't show panel hints.
+    # Vague: Display a generic item sprite based on the type of item inside the panel (e.g. badge, star piece, key item).
+    # Concrete: Display the exact sprite of the item inside the panel.
+    'off': 50
+    vague: 0
+    concrete: 0
+
+  foliage_item_hints:
+    # When enabled, bushes and trees will emit a glow when they are hiding something.
+    'false': 0
+    'true': 50
+
+  cook_without_frying_pan:
+    # When enabled, allows Tayce T. to cook for you without first finding the frying pan.
+    # When disabled, you will have to find the frying pan before Tayce T. can cook anything for you.
+    'false': 50
+    'true': 0
+
+  cutscene_mode:
+    # Vanilla: Cutscenes from the original game are preserved.
+    # Shortened: Cutscenes are quicker but preserved with some condensed dialogue.
+    # Minimal: Most cutscenes and dialogues are removed.
+    vanilla: 0
+    shortened: 50
+    minimal: 0
+
+  skip_epilogue:
+    # When enabled, the game will skip directly to credits once you have acquired the Star Rod.
+    'false': 0
+    'true': 50
+
+  mario_palette:
+    # Changes the way the sprite looks in-game.
+    default: 50
+    luigi: 0
+    wario: 0
+    waluigi: 0
+    fire: 0
+    ice: 0
+    maker: 0
+    classic: 0
+    random_pick: 0
+    random_pick_no_vanilla: 0
+    random_on_every_load: 0
+
+  goombario_palette:
+    # Changes the way the sprite looks in-game.
+    default: 50
+    green: 0
+    red: 0
+    yellow: 0
+    blue: 0
+    grey: 0
+    random_pick: 0
+    random_pick_no_vanilla: 0
+    random_on_every_load: 0
+
+  kooper_palette:
+    # Changes the way the sprite looks in-game.
+    default: 50
+    green: 0
+    red: 0
+    purple: 0
+    grey: 0
+    random_pick: 0
+    random_pick_no_vanilla: 0
+    random_on_every_load: 0
+
+  bombette_palette:
+    # Changes the way the sprite looks in-game.
+    default: 50
+    orange: 0
+    green: 0
+    yellow: 0
+    blue: 0
+    red: 0
+    purple: 0
+    random_pick: 0
+    random_pick_no_vanilla: 0
+    random_on_every_load: 0
+
+  parakarry_palette:
+    # Changes the way the sprite looks in-game.
+    default: 50
+    green: 0
+    red: 0
+    purple: 0
+    random_pick: 0
+    random_pick_no_vanilla: 0
+    random_on_every_load: 0
+
+  bow_palette:
+    # Changes the way the sprite looks in-game.
+    default: 50
+    red: 0
+    pink: 0
+    blue: 0
+    grey: 0
+    random_pick: 0
+    random_pick_no_vanilla: 0
+    random_on_every_load: 0
+
+  watt_palette:
+    # Changes the way the sprite looks in-game.
+    default: 50
+    blue: 0
+    pink: 0
+    green: 0
+    random_pick: 0
+    random_pick_no_vanilla: 0
+    random_on_every_load: 0
+
+  sushie_palette:
+    # Changes the way the sprite looks in-game.
+    default: 50
+    red: 0
+    yellow: 0
+    green: 0
+    blue: 0
+    random_pick: 0
+    random_pick_no_vanilla: 0
+    random_on_every_load: 0
+
+  lakilester_palette:
+    # Changes the way the sprite looks in-game.
+    default: 50
+    blue: 0
+    dark: 0
+    red: 0
+    green: 0
+    random_pick: 0
+    random_pick_no_vanilla: 0
+    random_on_every_load: 0
+
+  boss_palette:
+    # Changes the way the sprites look in-game.
+    default: 50
+    random_pick: 0
+    random_pick_no_vanilla: 0
+    random_on_every_load: 0
+
+  npc_palette:
+    # Changes the way the sprites look in-game.
+    default: 50
+    random_pick: 0
+    random_pick_no_vanilla: 0
+    random_on_every_load: 0
+
+  enemy_palette:
+    # Changes the way the sprites look in-game.
+    default: 50
+    random_pick: 0
+    random_pick_no_vanilla: 0
+    random_on_every_load: 0
+
+  hammer_palette:
+    # Changes the way the sprite looks in-game.
+    default: 50
+    random_pick: 0
+    random_pick_no_vanilla: 0
+    random_on_every_load: 0
+
+  status_menu_palette:
+    # Changes the way the status menu at the top of the screen looks in-game.
+    default: 50
+    blue: 0
+    green: 0
+    teal: 0
+    brown: 0
+    purple: 0
+    grey: 0
+    random_pick: 0
+    animated: 0
+
+  coin_palette:
+    # Changes the way the sprites look in-game.
+    default: 50
+    red: 0
+    blue: 0
+    purple: 0
+    silver: 0
+
+  random_text:
+    # When enabled, all text in the game will be randomized.
+    'false': 50
+    'true': 0
+
+  roman_numerals:
+    # When enabled, enemy HP bars will use roman numerals.
+    'false': 50
+    'true': 0
+
+  shuffle_music:
+    # Shuffles the different songs in the game.
+    # Shuffle By Mood: Songs will be shuffled within groups of similar moods such as relaxed, upbeat, battle.
+    # Shuffle By Type: Songs will be shuffled within groups of similar types such as overworld, battle, event.
+    # Full Shuffle: Any song can play anywhere in the game.
+    'off': 50
+    shuffle_by_mood: 0
+    shuffle_by_type: 0
+    full_shuffle: 0
+
+  shuffle_jingles:
+    # When enabled, shuffles the different short music jingles in the game.
+    'false': 50
+    'true': 0
+
+  random_pitch:
+    # When enabled, randomizes the pitch of the game's music and sounds.
+    'false': 50
+    'true': 0
+
+  mute_danger_beeps:
+    # When enabled, mutes the sound effect that plays when Mario is in danger.
+    'false': 50
+    'true': 0
+
+  pmr_settings_string:
+    # Put a value for this if grabbing the settings string from https://pm64randomizer.com/. Keep in mind not to use
+    # settings specific to base PMR, and that AP-specific settings not on the site will keep their default values.
+    # If you aren't using the site to get your settings, leave this as 'None'.
+    None: 50
+
+  death_link:
+    # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
+    'false': 50
+    'true': 0
+
+  ###########################
+  # Item & Location Options #
+  ###########################
+  local_items:
+    # Forces these items to be in their native world.
+    []
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with the specified amount of these items. Example: "Bomb: 1"
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    []
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []
+
+  plando_items:
+    # Generic items plando.
+    []

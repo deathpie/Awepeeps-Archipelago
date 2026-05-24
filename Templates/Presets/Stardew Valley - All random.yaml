@@ -657,7 +657,7 @@ Stardew Valley:
     # Bite Rate: Shorter delay to get a bite when fishing
     # Fish Trap: Effect similar to the Trap Bobber, but weaker
     # Fishing Bar Size: Increased Fishing Bar Size
-    ['Defense', 'Bite Rate', 'Luck']
+    ['Luck', 'Bite Rate', 'Defense']
 
   allowed_filler_items:
     # Types of filler items that can be generated for this slot. All allowed fillers have the same odds, and duplicates can roll
@@ -676,7 +676,7 @@ Stardew Valley:
     # Rings: Various rings
     # Hats: Various hats.
     # Decorations: Various decorations and furniture
-    ['Consumables', 'Quality Of Life', 'Food', 'Buff Food', 'Fishing Items', 'Fruit Trees', 'Machines', 'Decorations', 'Currencies', 'Hats', 'Rings', 'Farming Items', 'Storage', 'Money', 'Materials']
+    ['Currencies', 'Storage', 'Rings', 'Farming Items', 'Hats', 'Fishing Items', 'Buff Food', 'Materials', 'Decorations', 'Quality Of Life', 'Food', 'Fruit Trees', 'Money', 'Machines', 'Consumables']
 
   trap_difficulty:
     # When rolling filler items, including resource packs, the game can also roll trap items.

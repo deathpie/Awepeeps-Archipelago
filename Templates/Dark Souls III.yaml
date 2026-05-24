@@ -368,7 +368,7 @@ Dark Souls III:
   ###########################
   exclude_locations:
     # Prevent these locations from having an important item.
-    ['Small Souls', 'Hidden', 'Miscellaneous', 'Small Crystal Lizards', 'Upgrade']
+    ['Small Crystal Lizards', 'Hidden', 'Miscellaneous', 'Small Souls', 'Upgrade']
 
   excluded_location_behavior:
     # How to choose items for excluded locations in DS3.
