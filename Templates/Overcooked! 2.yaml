@@ -99,7 +99,7 @@ Overcooked! 2:
 
   include_dlcs:
     # Which DLCs should be included when 'Shuffle Level Order' is enabled?'
-    ['Seasonal', 'Story']
+    ['Story', 'Seasonal']
 
   include_horde_levels:
     # Includes "Horde Defense" levels in the pool of possible kitchens when Shuffle Level Order is enabled. Also adds

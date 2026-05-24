@@ -156,7 +156,7 @@ Pokemon Emerald:
     # Determines which Dexsanity encounter areas are in logic.
     # 
     # Logic will only consider access to Pokemon at these encounter types, but they may still be found elsewhere.
-    ['Water', 'Fishing', 'Land']
+    ['Land', 'Water', 'Fishing']
 
   trainersanity:
     # Defeating a trainer gives you an item.

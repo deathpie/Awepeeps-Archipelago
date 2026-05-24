@@ -189,7 +189,7 @@ Starcraft 2:
     # - 'Legacy of the Void'
     # - 'Into the Void (Legacy of the Void: Epilogue)'
     # - 'Nova Covert Ops'
-    ['Into the Void (Legacy of the Void: Epilogue)', 'Whispers of Oblivion (Legacy of the Void: Prologue)', 'Heart of the Swarm', 'Wings of Liberty', 'Prophecy', 'Legacy of the Void', 'Nova Covert Ops']
+    ['Heart of the Swarm', 'Into the Void (Legacy of the Void: Epilogue)', 'Nova Covert Ops', 'Wings of Liberty', 'Whispers of Oblivion (Legacy of the Void: Prologue)', 'Prophecy', 'Legacy of the Void']
 
   enable_race_swap:
     # Allow mission variants where you play a faction other than the one the map was initially

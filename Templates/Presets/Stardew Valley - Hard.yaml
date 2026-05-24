@@ -251,7 +251,7 @@ Stardew Valley:
     # Landslide: Start without the landslide that leads to the mines
     # Community Center: Start without the key to the Community Center, and the Forest Magic to allow reading the bundles
     # Buildings: Start without the Shipping Bin and Pet Bowl
-    ['Landslide', 'Community Center']
+    ['Community Center', 'Landslide']
 
   ###################
   # Extra Shuffling #
@@ -404,7 +404,7 @@ Stardew Valley:
     # Bushes: Walnuts that are in a bush and can be collected by clicking it
     # Dig Spots: Walnuts that are underground and must be digged up. Includes Journal scrap walnuts
     # Repeatables: Random chance walnuts from normal actions (fishing, farming, combat, etc)
-    ['Repeatables', 'Dig Spots', 'Puzzles', 'Bushes']
+    ['Bushes', 'Repeatables', 'Dig Spots', 'Puzzles']
 
   moviesanity:
     # Add checks for watching movies?
@@ -467,7 +467,7 @@ Stardew Valley:
     # Shop: Includes all edible items purchased primarily in shops
     # Poisonous: Includes items that cause negative effects when consumed
     # Lock Effects: Whether each positive effect from edible items is unlocked through an archipelago "Enzyme" item. Requires some eatsanity locations to be enabled.
-    ['Crops', 'Artisan', 'Fish']
+    ['Fish', 'Crops', 'Artisan']
 
   secretsanity:
     # Add checks for the various secrets and easter eggs present in Stardew Valley. Some of them can be very obscure. If you enable this setting, you should expect to need the wiki a lot.
@@ -475,7 +475,7 @@ Stardew Valley:
     # Difficult: Includes secrets that require a lot of grinding or a lot of luck. Not for the faint of heart. Enabling this will also modify some secrets from the other categories to require their harder variation, if there is one.
     # Fishing: Various special items and furniture that can be fished up in specific places
     # Secret Notes: Complete tasks described in the various secret notes, when applicable
-    ['Fishing', 'Secret Notes', 'Easy']
+    ['Easy', 'Secret Notes', 'Fishing']
 
   hatsanity:
     # Add checks for wearing hats?
@@ -631,7 +631,7 @@ Stardew Valley:
     # Bite Rate: Shorter delay to get a bite when fishing
     # Fish Trap: Effect similar to the Trap Bobber, but weaker
     # Fishing Bar Size: Increased Fishing Bar Size
-    ['Defense', 'Bite Rate', 'Luck']
+    ['Luck', 'Bite Rate', 'Defense']
 
   allowed_filler_items:
     # Types of filler items that can be generated for this slot. All allowed fillers have the same odds, and duplicates can roll
@@ -650,7 +650,7 @@ Stardew Valley:
     # Rings: Various rings
     # Hats: Various hats.
     # Decorations: Various decorations and furniture
-    ['Consumables', 'Quality Of Life', 'Food', 'Buff Food', 'Fishing Items', 'Fruit Trees', 'Machines', 'Decorations', 'Currencies', 'Hats', 'Rings', 'Farming Items', 'Storage', 'Money', 'Materials']
+    ['Currencies', 'Storage', 'Rings', 'Farming Items', 'Hats', 'Fishing Items', 'Buff Food', 'Materials', 'Decorations', 'Quality Of Life', 'Food', 'Fruit Trees', 'Money', 'Machines', 'Consumables']
 
   trap_difficulty:
     # When rolling filler items, including resource packs, the game can also roll trap items.

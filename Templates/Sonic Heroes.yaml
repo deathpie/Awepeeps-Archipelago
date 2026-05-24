@@ -108,7 +108,7 @@ Sonic Heroes:
     #     'Super Hard Mode',
     #     'Super Hard CheckpointSanity',
     # ]
-    ['Sonic CheckpointSanity 1 Set', 'Sonic Act A', 'Sonic KeySanity 1 Set']
+    ['Sonic KeySanity 1 Set', 'Sonic CheckpointSanity 1 Set', 'Sonic Act A']
 
   unlock_type:
     # How should the entire run be structured?
@@ -157,7 +157,7 @@ Sonic Heroes:
     #     - 'Team Fight 2'
     #     - 'Robot Storm'
     #     - 'Egg Emperor'
-    ['Robot Carnival', 'Egg Emperor', 'Robot Storm', 'Team Fight 2', 'Team Fight 1', 'Egg Albatross', 'Egg Hawk']
+    ['Team Fight 2', 'Team Fight 1', 'Egg Hawk', 'Robot Carnival', 'Egg Albatross', 'Robot Storm', 'Egg Emperor']
 
   required_rank:
     # What Minimum Rank should be required to send level complete checks?

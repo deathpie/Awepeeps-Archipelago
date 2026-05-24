@@ -1096,7 +1096,7 @@ requires:
     # ``/items`` command.
     # 
     # If no vehicle Chapters are enabled, no vehicle characters will be included in the item pool.
-    ['Yoda (Ghost)', 'General Grievous', 'Droideka']
+    ['Yoda (Ghost)', 'Droideka', 'General Grievous']
 
   preferred_extras:
     # Specify Extras that the generator should try to always include in the item pool.
@@ -1113,7 +1113,7 @@ requires:
     # When Progressive Score Multiplier items are enabled (always enabled currently), preferring "Score x{number}" to be
     # included in the item pool will try to ensure there are enough Progressive Score Multiplier items to unlock that
     # score multiplier.
-    ['Deflect Bolts', 'Disarm Troopers', 'Score x6', 'Stud Magnet', 'Fast Force', 'Score x10', 'Invincibility', 'Dark Side', 'Score x8', 'Fast Build', 'Score x4', 'Score x2', 'Exploding Blaster Bolts', 'Force Grapple Leap', 'Extra Toggle', 'Infinite Torpedos', 'Self Destruct', 'Super Ewok Catapult']
+    ['Self Destruct', 'Score x10', 'Extra Toggle', 'Score x8', 'Disarm Troopers', 'Super Ewok Catapult', 'Deflect Bolts', 'Infinite Torpedos', 'Fast Build', 'Score x2', 'Invincibility', 'Exploding Blaster Bolts', 'Score x6', 'Force Grapple Leap', 'Dark Side', 'Stud Magnet', 'Score x4', 'Fast Force']
 
   filler_reserve_characters:
     # When enabled, reserve space in the item pool for at least as many Characters as enabled locations that would
