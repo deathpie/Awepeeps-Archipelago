@@ -64,9 +64,9 @@ Pokemon Emerald:
   reusable_tms_tutors: 'true'
   move_blacklist: []
   min_catch_rate: '3'
-  guaranteed_catch: 'false'
+  guaranteed_catch: 'true'
   normalize_encounter_rates: 'false'
-  exp_modifier: '100'
+  exp_modifier: '150'
   blind_trainers: 'false'
   purge_spinners: 'false'
   match_trainer_levels: 'off'
@@ -85,10 +85,10 @@ Pokemon Emerald:
   - Rustboro City
   - Dewford Town
   hm_requirements: vanilla
-  turbo_a: 'true'
+  turbo_a: 'false'
   receive_item_messages: all
   remote_items: 'false'
-  music: 'true'
+  music: 'false'
   fanfares: 'false'
   death_link: 'false'
   enable_wonder_trading: 'true'
