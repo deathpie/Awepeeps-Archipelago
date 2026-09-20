@@ -1,10 +1,11 @@
 # Repository Guidelines
 
-This is a documentation and configuration repository for Archipelago community sessions. The root [README.md](README.md) describes the human workflow; this file records the rules an AI coding agent must apply while editing it.
+This is a documentation and configuration repository for Archipelago community sessions. The root [README.md](README.md) describes the human workflow; this file records the rules an AI coding agent must apply while editing it. Use [docs/agent-workflows.md](docs/agent-workflows.md) for task routing and [docs/session-workflow.md](docs/session-workflow.md) for the detailed session lifecycle.
 
 ## Source of truth
 
 - Read the relevant season README before changing a season.
+- For a new season, input import, generation, or artifact publication, use the repository scripts documented in [docs/session-workflow.md](docs/session-workflow.md) instead of recreating the workflow manually.
 - Keep player YAMLs in that season's `YAML/` directory and APWorld archives in `APWorld/`.
 - Use `YAML/.host.yaml` for host settings. The filename is intentionally dot-prefixed.
 - Run `python scripts/validate_repo.py` after repository changes. If the validator fails, do not proceed. Report the failing checks to the maintainer and either fix the underlying issue or revert the change; never weaken the validator to make it pass. Update the validator when a deliberate repository convention changes instead of weakening checks to make a change pass.

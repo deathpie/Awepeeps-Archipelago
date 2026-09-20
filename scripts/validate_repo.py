@@ -126,6 +126,35 @@ def validate_tracked_safety(files: list[Path], errors: list[str]) -> None:
             errors.append(f"ROM-like file is tracked or not ignored: {relative(path)}")
 
 
+def validate_revealed_archives(files: list[Path], errors: list[str]) -> None:
+    for path in files:
+        parts = {part.lower() for part in path.relative_to(ROOT).parts}
+        if ".secrets" not in parts or "revealed" not in parts or path.suffix.lower() != ".zip":
+            continue
+        try:
+            with zipfile.ZipFile(path) as archive:
+                broken_file = archive.testzip()
+                if broken_file is not None:
+                    errors.append(
+                        f"corrupt revealed archive {relative(path)}: {broken_file}"
+                    )
+                    continue
+                unsafe_entries = sorted(
+                    entry.filename
+                    for entry in archive.infolist()
+                    if Path(entry.filename).suffix.lower() in ROM_EXTENSIONS
+                )
+        except (OSError, zipfile.BadZipFile) as exc:
+            errors.append(f"invalid revealed archive {relative(path)}: {exc}")
+            continue
+        if unsafe_entries:
+            listed = ", ".join(unsafe_entries[:5])
+            suffix = "..." if len(unsafe_entries) > 5 else ""
+            errors.append(
+                f"revealed archive contains ROM-like entries {relative(path)}: {listed}{suffix}"
+            )
+
+
 def validate_seasons(errors: list[str], yaml_module: object) -> None:
     if not SEASONS_ROOT.is_dir():
         errors.append("missing 2026 season directory")
@@ -201,6 +230,14 @@ def validate_seasons(errors: list[str], yaml_module: object) -> None:
 
             if not isinstance(game, str) or not game.strip():
                 errors.append(f"{relative(yaml_path)} is missing a non-empty game")
+            elif game.strip() == "TBD" and "_TBD_v" not in yaml_path.name:
+                errors.append(
+                    f"TBD player YAML must use a _TBD_vN filename: {relative(yaml_path)}"
+                )
+            elif "_TBD_v" in yaml_path.name and game.strip() != "TBD":
+                errors.append(
+                    f"TBD filename must use game: TBD: {relative(yaml_path)}"
+                )
 
         apworld_dir = season / "APWorld"
         if apworld_dir.is_dir():
@@ -270,6 +307,7 @@ def main() -> int:
     files = repository_files(errors)
     validate_ignore_rules(errors)
     validate_tracked_safety(files, errors)
+    validate_revealed_archives(files, errors)
     validate_seasons(errors, yaml)
     validate_markdown_links(errors)
 
