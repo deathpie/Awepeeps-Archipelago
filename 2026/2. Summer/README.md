@@ -1,5 +1,7 @@
 # Summer 2026 Games
 
+> **Status:** Inactive — archived and read-only. Do not modify this file via automated edits; changes must be made manually by repository maintainers.
+
 > See main Archipelago resources: [Archipelago Resources](../../Archipelago.md)
 
 ## Session Links

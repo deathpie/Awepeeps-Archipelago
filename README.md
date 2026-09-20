@@ -1,29 +1,46 @@
 # Awepeeps Archipelago
 
-This repository organizes Archipelago multiworld game configurations, setups, and documentation for the Awepeeps community sessions.
+This repository organizes Archipelago multiworld configurations, setup references, and session records for the Awepeeps community.
 
-## Repository Structure
+## Repository layout
 
-- **Seasons**: Organized by year and season (e.g., `2026/1. Spring/`)
-  - `README.md`: Alphabetical list of games with embedded links to info, setup guides, APWorld releases, and PopTracker packs
-  - `YAML/`: Player-specific YAML configuration files (named as `playername_gamename_v1.yaml`)
-  - `APWorld/`: Archipelago world files (if applicable)
-  - Other session-related files
+- `2026/<number>. <Season>/`: one folder per session season.
+- `README.md` in each season: game links, player assignments, session dates, and setup notes.
+- `YAML/`: player configurations and the season's `.host.yaml` generation settings.
+- `APWorld/`: APWorld archives kept with the session for reference and local installation.
+- `.secrets/revealed/`: spoiler logs or other files intentionally shared with the repository.
+- `.secrets/hidden/`: private local files; this path is ignored.
+- `.roms/`: local ROM storage; this path is ignored and must stay local.
+- [Archipelago resources](Archipelago.md): general setup and community links.
 
-## Usage
+Spring and Summer 2026 are archived. Their historical YAMLs may retain `{player}` placeholders. New or active-season YAMLs use the literal in-game player name in `name:`.
 
-- Refer to each season's README for game-specific setup instructions and links
-- YAML files contain player configurations for Archipelago generations
-- See [Archipelago.md](Archipelago.md) for general Archipelago resources and links
-- Follow the guidelines in `.instructions.md` for maintaining consistency
+## Preparing a session
 
-## Contributing
+1. Read the season README and the linked game setup guides.
+2. Install each required APWorld manually into the Archipelago installation's `custom_worlds` directory. Review the source or release before installing an archive; this repository does not automatically install or trust third-party code.
+3. Obtain any required game files lawfully. ROMs are never stored or linked here. Keep local copies under the season's `.roms/` directory or another local-only location.
+4. Copy the player YAMLs from the season's `YAML/` directory into the Archipelago installation's `Players/` directory, or provide them through Archipelago's normal generation workflow. Do not copy `.host.yaml` as a player file.
+5. Use the season's `YAML/.host.yaml` for host settings when generating. Its `player_files_path: "Players"` and `output_path: "output"` are relative to the Archipelago installation, not this repository.
+6. Keep generated private spoilers, logs, and credentials in `.secrets/hidden/` or another ignored local directory. Move a file to `.secrets/revealed/` only when it is intentionally shareable.
 
-- Maintain season READMEs according to the process outlined in `.instructions.md`
-- Do not commit `.admin` folders or `.generated-secrets-hidden` files (these are gitignored)
-- All changes should be reviewed before committing
+Game-specific caveats belong in the season README. For example, Fall 2026 documents the SM64 decompilation workflow and the local Crystal ROM filename expected by its host configuration.
 
-## Notes
+## Validation
 
-- This repo is for community use and may contain spoilers or session-specific data
-- Ensure YAML files are versioned appropriately (e.g., `_v1.yaml`)
+Install the development dependency once, then run the repository validator from the repository root:
+
+```powershell
+python -m pip install -r requirements-dev.txt
+python scripts/validate_repo.py
+```
+
+The validator checks season structure, YAML parsing, active player names, duplicate names, APWorld ZIP integrity, local Markdown links, ignore rules, and tracked or non-ignored files with common ROM extensions. GitHub Actions runs the same check on every push and pull request.
+
+## Contribution rules
+
+- Keep changes scoped to the relevant season and preserve archived session history unless a maintainer explicitly requests an archive correction.
+- Use `player_game_vN.yaml` filenames and literal player aliases for active sessions.
+- Never commit ROMs, ROM download links, private secrets, generated credentials, or unreviewed generated output.
+- Run the validator before asking for review. The pull-request template records the remaining manual checks.
+- Read [AGENTS.md](AGENTS.md) before making repository changes with an AI coding agent.

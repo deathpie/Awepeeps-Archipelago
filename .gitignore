@@ -1,11 +1,62 @@
 # Ignore root admin folder
 .admin/
 
-# Ignore hidden secrets but allow revealed
-.secrets/hidden/
+# Ignore Python-generated cache files
+__pycache__/
+*.py[cod]
 
-# Ignore local Summer ROM stash
-2026/2. Summer/.roms/
+# Ignore private secrets in any season but allow revealed secrets
+**/.secrets/hidden/
+**/.generated-secrets-hidden/
+
+# Ignore local ROM stashes in any season
+**/.roms/
+
+# Never track common ROM formats anywhere in the repository
+*.3ds
+*.a26
+*.a52
+*.a78
+*.bin
+*.cdi
+*.chd
+*.cia
+*.col
+*.cue
+*.gb
+*.gba
+*.gbc
+*.gcm
+*.gcz
+*.gdi
+*.gen
+*.gg
+*.img
+*.int
+*.iso
+*.j64
+*.nds
+*.n64
+*.neo
+*.nes
+*.ng
+*.nsp
+*.pce
+*.pbp
+*.rom
+*.rvz
+*.sfc
+*.smc
+*.smd
+*.sg
+*.sms
+*.v64
+*.wbfs
+*.wad
+*.wud
+*.wux
+*.xci
+*.z64
 
 # Other common ignores (if needed)
 # *.log
