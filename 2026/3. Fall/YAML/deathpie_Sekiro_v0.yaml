@@ -1,0 +1,311 @@
+﻿# Q. What is this file?
+# A. This file contains options which allow you to configure your multiworld experience while allowing
+#    others to play how they want as well.
+#
+# Q. How do I use it?
+# A. The options in this file are weighted. This means the higher number you assign to a value, the
+#    more chances you have for that option to be chosen. For example, an option like this:
+#
+#    map_shuffle:
+#      on: 5
+#      off: 15
+#
+#    Means you have 5 chances for map shuffle to occur, and 15 chances for map shuffle to be turned
+#    off.
+#
+# Q. I've never seen a file like this before. What characters am I allowed to use?
+# A. This is a .yaml file. You are allowed to use most characters.
+#    To test if your yaml is valid or not, you can use this website:
+#        http://www.yamllint.com/
+#    You can also verify that your Archipelago options are valid at this site:
+#        https://archipelago.gg/check
+
+# Your name in-game, limited to 16 characters.
+#     {player} will be replaced with the player's slot number.
+#     {PLAYER} will be replaced with the player's slot number, if that slot number is greater than 1.
+#     {number} will be replaced with the counter value of the name.
+#     {NUMBER} will be replaced with the counter value of the name, if the counter value is greater than 1.
+name: deathpie
+
+# Used to describe your yaml. Useful if you have multiple files.
+description: 'Default Sekiro: Shadows Die Twice Template'
+
+game: 'Sekiro: Shadows Die Twice'
+requires:
+  version: 0.6.7 # Version of Archipelago required for this yaml to work as expected.
+  game:
+    'Sekiro: Shadows Die Twice': 1.0.1 # Version of the world required for this yaml to work as expected.
+
+'Sekiro: Shadows Die Twice':
+  ################
+  # Game Options #
+  ################
+  progression_balancing:
+    # A system that can move progression earlier, to try and prevent the player from getting stuck and bored early.
+    # 
+    # A lower setting means more getting stuck. A higher setting means less getting stuck.
+    #
+    # You can define additional values between the minimum and maximum values.
+    # Minimum value is 0
+    # Maximum value is 99
+    random: 0
+    random-low: 0 # random value weighted towards lower values
+    random-high: 0 # random value weighted towards higher values
+    random-range-0-99: 0 # random value between 0 and 99
+    disabled: 0 # equivalent to 0
+    normal: 50 # equivalent to 50
+    extreme: 0 # equivalent to 99
+
+  accessibility:
+    # Set rules for reachability of your items/locations.
+    # 
+    # **Full:** ensure everything can be reached and acquired.
+    # 
+    # **Minimal:** ensure what is needed to reach your goal can be acquired.
+    full: 50
+    minimal: 0
+
+  goal_option:
+    # Shura: Play until the first invasion and choose to obey the Iron Code when prompted by Owl.
+    # This is a shorter playthrough ideal for big syncs with time limits.
+    # 
+    # Full Game: Play the entire game by breaking the Iron Code when prompted by Owl after the first invasion.
+    # Any of the 3 full endings will work for this.
+    # 
+    # NOTE: The choice of ending must still be selected by you in the game. So no mashing through the dialogue!
+    full_game: 50
+    shura: 0
+
+  quick_hirata:
+    # Force the Young Lord's Bell Charm to be early in your local world or the multiworld
+    # 
+    # If you wish to use this in a solo playthrough or with games that have a very limited sphere 1, please use
+    # early_local for best results. Otherwise, the generation may not be able to place this early and will put it anywhere
+    # in the multiworld.
+    'off': 50
+    early_global: 0
+    early_local: 0
+
+  very_early_hirata:
+    # Make it possible to need to progress into Hirata Estate before Ashina Outskirts (no softlock)
+    # 
+    # If this is selected, and you get the Young Lord's Bell Charm instead of the Prosthetic, the Prosthetic can end up
+    # being in the multiworld. Keep this in mind, as it may BK you for a good bit.
+    'false': 50
+    'true': 0
+
+  additional_region_locks:
+    # Add custom progression items and corresponding blockers to the entrances to Ashina Castle, Abandoned Dungeon,
+    # Senpou Temple, Ashina Depths (Poison Pool) and Sunken Valley to allow for more spheres and better balancing. The
+    # items in question are described in the item documentation found on the GitHub. This also removes Bull skip!
+    # 
+    # This is recommended to be kept enabled.
+    # If you disable it, you will immediately have over half the game in logic once you have the prosthetic.
+    'false': 0
+    'true': 50
+
+  death_link:
+    # When you die, everyone who enabled death link dies. Of course, the reverse is true too.
+    # 
+    # - **Off:** Death link is disabled. (The default.)
+    # - **Full Death:** Death link triggers only for full deaths. (No resurrection available or falling death).
+    # - **Any Death:** Death link triggers anytime you hit 0 HP. (Warning: Usage can lead to angry cooperators!)
+    'off': 0
+    full_death: 50
+    any_death: 0
+
+  remove_headless_slow_walk:
+    # Remove the Headless-induced slow walk.
+    'false': 0
+    'true': 50
+
+  ##########
+  # Skills #
+  ##########
+  randomize_skills_and_prosthetics:
+    # Randomize Skills and Prosthetics in their respective upgrade trees.
+    'false': 0
+    'true': 50
+
+  replace_esoteric_texts_with_skills:
+    # Randomize Skills as Item pickups, removing the Esoteric Texts.
+    # 
+    # This will raise an error unless Skills and Prosthetics are also randomized.
+    'false': 0
+    'true': 50
+
+  ###########
+  # Enemies #
+  ###########
+  enemy_randomizer:
+    # Toggle the Enemy Randomizer on or off.
+    # 
+    # This is required to use any of the options in the Enemies Option block!!
+    'false': 0
+    'true': 50
+
+  randomize_bosses:
+    # Randomize all bosses between themselves.
+    # 
+    # This is ignored unless the option "Enemy Randomizer" is enabled.
+    'false': 0
+    'true': 50
+
+  randomize_minibosses:
+    # Randomize all minibosses between themselves.
+    # 
+    # This is ignored unless the option "Enemy Randomizer" is enabled.
+    'false': 0
+    'true': 50
+
+  randomize_headless:
+    # Include headless in the randomizer pool for minibosses (non-underwater)
+    # 
+    # This is ignored unless the option "Enemy Randomizer" is enabled.
+    'false': 50
+    'true': 0
+
+  randomize_regular_enemies:
+    # Randomize all other enemy placements.
+    # 
+    # This is ignored unless the option "Enemy Randomizer" is enabled.
+    'false': 0
+    'true': 50
+
+  similar_boss_phases:
+    # Prevent fights to be something like Sword Saint Isshin + Demon of Hatred.
+    # 
+    # This setting will try to keep a similar number of phases compared to the replaced vanilla bosses.
+    # 
+    # This is ignored unless the option "Enemy Randomizer" is enabled.
+    'false': 0
+    'true': 50
+
+  balanced_endgame_boss_phases:
+    # Prevent early bosses to be seriously unfun by considering late game boss phases as longer than earlier ones.
+    # 
+    # This is ignored unless the option "Enemy Randomizer" is enabled.
+    'false': 0
+    'true': 50
+
+  simple_early_minibosses:
+    # Prevent early minibosses from being unfun without scaling.
+    # 
+    # Should you turn this off, you will be provided 2x Divine Confetti to be collected from the Offering Box (each
+    # costing 50 sen, because the Offering Box is weird like that and will not display it if it costs less than 50...)
+    # This is in case you get an early blocking Shichimen (or Headless if they are enabled).
+    # After using those, your fate is up to luck (or skill).
+    # 
+    # This is ignored unless the option "Enemy Randomizer" is enabled.
+    'false': 0
+    'true': 50
+
+  scale_enemies:
+    # Scale randomized enemy stats to match the areas in which they appear.
+    # 
+    # Disabling this will tend to make the early game much more difficult and the late game much
+    # easier.
+    # 
+    # This is ignored unless the option "Enemy Randomizer" is enabled.
+    'false': 0
+    'true': 50
+
+  random_enemy_preset:
+    # The YAML preset for the static enemy randomizer.
+    # 
+    # See the static randomizer documentation in `randomizerAP\presets\README.txt` for details.
+    # Include this as nested YAML. For example:
+    # 
+    # .. code-block:: YAML
+    # 
+    #   random_enemy_preset:
+    #     RemoveSource: Demon of Hatred; Corrupted monk
+    #     DontRandomize: Shichimen Warrior
+    # 
+    # Full presets such as Ashina Zoo or Nightmare Mode have been built into the client for ease of use. Simply use the
+    # `Randomizer options` to select your desired preset before first connecting to a multiworld.
+    # 
+    # This is ignored unless the option "Enemy Randomizer" is enabled.
+    {}
+
+  ###########################
+  # Item & Location Options #
+  ###########################
+  carpsanity:
+    # Add Treasure Carp drops into the item pool
+    'false': 0
+    'true': 50
+
+  exclude_locations:
+    # Prevent these locations from having an important item.
+    ['Hidden']
+
+  excluded_location_behavior:
+    # How to choose items for excluded locations in Sekiro.
+    # 
+    # - **Allow Useful:** Excluded locations can't have progression items, but they can have useful
+    #   items.
+    # - **Forbid Useful:** Neither progression items nor useful items can be placed in excluded
+    #   locations.
+    # - **Do Not Randomize:** Excluded locations always contain the same item as in vanilla Sekiro.
+    # 
+    # A "progression item" is anything that's required to unlock another location in some game. A
+    # "useful item" is something each game defines individually, usually items that are quite
+    # desirable but not strictly necessary.
+    allow_useful: 0
+    forbid_useful: 50
+    do_not_randomize: 0
+
+  missable_location_behavior:
+    # Which items can be placed in locations that can be permanently missed.
+    # 
+    # - **Allow Useful:** Missable locations can't have progression items, but they can have useful
+    #   items.
+    # - **Forbid Useful:** Neither progression items nor useful items can be placed in missable
+    #   locations.
+    # - **Do Not Randomize:** Missable locations always contain the same item as in vanilla Sekiro.
+    # 
+    # A "progression item" is anything that's required to unlock another location in some game. A
+    # "useful item" is something each game defines individually, usually items that are quite
+    # desirable but not strictly necessary.
+    allow_useful: 0
+    forbid_useful: 50
+    do_not_randomize: 0
+
+  local_items:
+    # Forces these items to be in their native world.
+    []
+
+  non_local_items:
+    # Forces these items to be outside their native world.
+    []
+
+  start_inventory:
+    # Start with the specified amount of these items. Example: "Bomb: 1"
+    {}
+
+  start_inventory_from_pool:
+    # Start with the specified amount of these items and don't place them in the world. Example: "Bomb: 1"
+    # 
+    # The game decides what the replacement items will be.
+    {}
+
+  start_hints:
+    # Start with these item's locations prefilled into the ``!hint`` command.
+    []
+
+  start_location_hints:
+    # Start with these locations and their item prefilled into the ``!hint`` command.
+    []
+
+  priority_locations:
+    # Prevent these locations from having an unimportant item.
+    []
+
+  item_links:
+    # Share part of your item pool with other players.
+    []
+
+  plando_items:
+    # Generic items plando.
+    []

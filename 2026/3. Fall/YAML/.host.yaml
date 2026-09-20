@@ -219,9 +219,14 @@ oot_soh_options:
   # Do not enable this if you are not ready to use /send, !getitem, or similar commands.
   # Do not enable this if you don't trust the players using it to play responsibly.
   allow_true_no_logic: false
-pokemon_emerald_settings:
-  # File name of your English Pokemon Emerald ROM
-  rom_file: "Pokemon - Emerald Version (USA, Europe).gba"
+pokemon_crystal_settings:
+  # File name of your English Pokemon Crystal ROM
+  rom_file: "Pokemon - Crystal Version (USA).gbc"
+  option_overrides:
+    # Enter your overrides here
+sml2_options:
+  # File name of the Super Mario Land 2 1.0 ROM
+  rom_file: "Super Mario Land 2 - 6 Golden Coins (USA, Europe).gb"
 pokemon_rb_options:
   # File names of the Pokemon Red and Blue roms
   red_rom_file: "Pokemon Red (UE) [S][!].gb"
@@ -273,9 +278,6 @@ sc2_options:
 sm_options:
   # File name of the v1.0 J rom
   rom_file: "Super Metroid (JU).sfc"
-sml2_options:
-  # File name of the Super Mario Land 2 1.0 ROM
-  rom_file: "Super Mario Land 2 - 6 Golden Coins (USA, Europe).gb"
 smw_options:
   # File name of the SMW US rom
   rom_file: "Super Mario World (USA).sfc"
