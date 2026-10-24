@@ -408,16 +408,24 @@ points or revealing its location. `/watches` (`$watches`) lists pending watches;
 (`$unwatch deathpie | Mikiri Counter`) removes one. Use the exact slot and item
 names; matching ignores case. The item must exist in that slot's game, and
 you must be registered for the slot. A Discord `/hint` or `$hint` request also
-adds a watch for a recognized item in your registered slot. It does not opt
+adds a watch for the canonical item returned by Archipelago in your registered slot. It does not opt
 you into pings, and requesting the hint still has the normal hint cost.
-The watch is added when the Discord request is queued, even if the server
-later declines the hint. Hints requested in game clients do not create a
-personal watch; use `/watch` for those.
+The watch is added from the server's unresolved hint result, so a typo that
+Archipelago resolves (such as `Mask Fragement: Left` becoming
+`Mask Fragment: Left`) still watches the right item. Declined requests,
+requests with no result, and already-found hint results do not add watches.
+Automatic watching works with hint-result announcements disabled and only
+affects the requester, who must still be registered for the receiving slot.
+Hints requested in game clients do not create a personal watch; use `/watch`
+for those.
 
-Watches respect the configured progression filter, trap spoiler settings, and
-finished-player suppression. A filtered item produces no post or ping; its
-observed arrival still completes the watch. Pings attach to the existing item
-post instead of creating a second notification.
+Pending watches from registered players override the configured progression
+filter: a watched filler item is posted even in a progression-only channel.
+This also works for players with notifications off, but never opts them into
+pings. Unwatched items retain the channel filter. Pure-trap spoiler settings
+and finished-player suppression still apply; an arrival hidden by those
+settings completes its watch without a post or ping. Pings attach to the
+existing item post instead of creating a second notification.
 
 Watches mean the next observed matching copy, not an item quantity or a search
 of previously received items. Preferences persist per Discord user ID and
@@ -589,7 +597,8 @@ Light example, see the fork's
 There are two separate paths with separate filters:
 
 - **Channel feed (not per-user, not opt-in).** Item events matching the configured
-  filter are posted to the broadcast channel. The host sets the level in `config.json`
+  filter, plus items explicitly watched by a registered player, are posted to
+  the broadcast channel. The host sets the level in `config.json`
   with `ItemFilterConfig.BotItemFilterLevel`: `2` progression only, `1`
   progression + useful, `0` progression + useful + normal (traps only when
   `BotItemSpoilTraps` is true). `AdvancedConfig.SnoozeCompletedGames` skips
